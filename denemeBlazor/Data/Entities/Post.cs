@@ -25,6 +25,8 @@ namespace SportsStore.Data.Entities
 
         public int AppUserId { get; set; }
 
+        //
+
         public List<Comment> Comments { get; set; }
     }
 }

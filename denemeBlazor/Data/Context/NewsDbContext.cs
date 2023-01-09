@@ -1,4 +1,5 @@
-﻿using denemeBlazor.Data.Entities;
+﻿using denemeBlazor.Data.Configurations;
+using denemeBlazor.Data.Entities;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
@@ -26,6 +27,14 @@ namespace SportsStore.Data.Context
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfiguration(new PostConfiguration());
+            modelBuilder.ApplyConfiguration(new CommentConfiguration());
+            modelBuilder.ApplyConfiguration(new AppUserConfiguration());
+
+
+            //Category Conf
+
+            modelBuilder.Entity<Category>().Property(x => x.Defination).IsRequired().HasMaxLength(300);
+
         }
     }
 }
