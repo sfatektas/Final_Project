@@ -19,9 +19,9 @@ namespace denemeBlazor.Data.UnitOfWork
             return new Repository<T>(_context);
         }
 
-        public Task SaveChangesAsync()
+        public async Task SaveChangesAsync()
         {
-            throw new NotImplementedException();
+             await _context.SaveChangesAsync();
         }
     }
 }
