@@ -12,8 +12,8 @@ using SportsStore.Data.Context;
 namespace denemeBlazor.Data.Migrations
 {
     [DbContext(typeof(NewsDbContext))]
-    [Migration("20230109182353_refactored3")]
-    partial class refactored3
+    [Migration("20230110231436_InitialCreate")]
+    partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -24,6 +24,22 @@ namespace denemeBlazor.Data.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
 
+            modelBuilder.Entity("denemeBlazor.Data.Entities.AppRole", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<string>("Defination")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("AppRole");
+                });
+
             modelBuilder.Entity("denemeBlazor.Data.Entities.AppUser", b =>
                 {
                     b.Property<int>("Id")
@@ -31,6 +47,9 @@ namespace denemeBlazor.Data.Migrations
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<int>("AppRoleId")
+                        .HasColumnType("int");
 
                     b.Property<string>("FirstName")
                         .IsRequired()
@@ -48,6 +67,8 @@ namespace denemeBlazor.Data.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("AppRoleId");
 
                     b.ToTable("AppUsers");
                 });
@@ -140,6 +161,17 @@ namespace denemeBlazor.Data.Migrations
                     b.ToTable("Posts");
                 });
 
+            modelBuilder.Entity("denemeBlazor.Data.Entities.AppUser", b =>
+                {
+                    b.HasOne("denemeBlazor.Data.Entities.AppRole", "AppRole")
+                        .WithMany("AppUsers")
+                        .HasForeignKey("AppRoleId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("AppRole");
+                });
+
             modelBuilder.Entity("SportsStore.Data.Entities.Comment", b =>
                 {
                     b.HasOne("denemeBlazor.Data.Entities.AppUser", "AppUser")
@@ -176,6 +208,11 @@ namespace denemeBlazor.Data.Migrations
                     b.Navigation("AppUser");
 
                     b.Navigation("Category");
+                });
+
+            modelBuilder.Entity("denemeBlazor.Data.Entities.AppRole", b =>
+                {
+                    b.Navigation("AppUsers");
                 });
 
             modelBuilder.Entity("denemeBlazor.Data.Entities.AppUser", b =>

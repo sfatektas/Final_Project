@@ -10,6 +10,7 @@ namespace denemeBlazor.Data.Configurations
         {
             builder.HasKey(x => x.Id);
             builder.Property(x => x.FirstName).IsRequired();
+            builder.Property(x => x.LastName).IsRequired();
             builder.Property(x => x.Username).IsRequired();
             builder.Property(x => x.Password).IsRequired();
             builder.HasMany(x => x.Posts).WithOne(x => x.AppUser).HasForeignKey(x => x.AppUserId);
