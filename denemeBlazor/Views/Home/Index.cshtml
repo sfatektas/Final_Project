@@ -1,6 +1,9 @@
-﻿
-@{
-
-}
+﻿@model List<CategoryListDto>
 
 <h1>Index works</h1>
+@{
+    foreach (var item in Model)
+    {
+        <p>@item.Defination</p>
+    }
+}

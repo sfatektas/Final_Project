@@ -5,28 +5,12 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace denemeBlazor.Data.Migrations
 {
-    public partial class RelationshipRefactored : Migration
+    public partial class InitialCreate : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "AppUsers",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    FirstName = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    LastName = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Username = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Password = table.Column<string>(type: "nvarchar(max)", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_AppUsers", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Categories",
+                name: "AppRole",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -35,7 +19,43 @@ namespace denemeBlazor.Data.Migrations
                 },
                 constraints: table =>
                 {
+                    table.PrimaryKey("PK_AppRole", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Categories",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Defination = table.Column<string>(type: "nvarchar(300)", maxLength: 300, nullable: false)
+                },
+                constraints: table =>
+                {
                     table.PrimaryKey("PK_Categories", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "AppUsers",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    FirstName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    LastName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Username = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Password = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    AppRoleId = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_AppUsers", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_AppUsers_AppRole_AppRoleId",
+                        column: x => x.AppRoleId,
+                        principalTable: "AppRole",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -94,8 +114,13 @@ namespace denemeBlazor.Data.Migrations
                         column: x => x.PostId,
                         principalTable: "Posts",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict); //Eğer kaldırılıması sıkıntı oluşturulucaksa bu işlem sırasında hata döndürür.
+                        onDelete: ReferentialAction.Restrict); // restrict olmalı 
                 });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_AppUsers_AppRoleId",
+                table: "AppUsers",
+                column: "AppRoleId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Comments_AppUserId",
@@ -131,6 +156,9 @@ namespace denemeBlazor.Data.Migrations
 
             migrationBuilder.DropTable(
                 name: "Categories");
+
+            migrationBuilder.DropTable(
+                name: "AppRole");
         }
     }
 }
