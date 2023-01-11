@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "U1WI8G+yOLHN6v9TW61BIFhW5XtMtFDOKhQzHO5Z9XqvtC3Qux26aE86ufAVaXb5d1SQYiQoZuuRh89slNrz6Q==",
+  "dgSpecHash": "BvHj0IoazrIp35j6CPO1x1HkHITV1u/Z/XdHBc2z2zFmPv5yyP9DkEBFvto8o6Ei/CJl4rShbmFyID5kZDiwiw==",
   "success": true,
   "projectFilePath": "C:\\Users\\SEFA$$\\source\\repos\\denemeBlazor\\denemeBlazor\\denemeBlazor.csproj",
   "expectedPackageFiles": [
@@ -8,6 +8,9 @@
     "C:\\Users\\SEFA$$\\.nuget\\packages\\autofac.extensions.dependencyinjection\\8.0.0\\autofac.extensions.dependencyinjection.8.0.0.nupkg.sha512",
     "C:\\Users\\SEFA$$\\.nuget\\packages\\automapper\\12.0.0\\automapper.12.0.0.nupkg.sha512",
     "C:\\Users\\SEFA$$\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\12.0.0\\automapper.extensions.microsoft.dependencyinjection.12.0.0.nupkg.sha512",
+    "C:\\Users\\SEFA$$\\.nuget\\packages\\fluentvalidation\\11.4.0\\fluentvalidation.11.4.0.nupkg.sha512",
+    "C:\\Users\\SEFA$$\\.nuget\\packages\\fluentvalidation.aspnetcore\\11.2.2\\fluentvalidation.aspnetcore.11.2.2.nupkg.sha512",
+    "C:\\Users\\SEFA$$\\.nuget\\packages\\fluentvalidation.dependencyinjectionextensions\\11.4.0\\fluentvalidation.dependencyinjectionextensions.11.4.0.nupkg.sha512",
     "C:\\Users\\SEFA$$\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\SEFA$$\\.nuget\\packages\\microsoft.aspnetcore.cryptography.internal\\6.0.12\\microsoft.aspnetcore.cryptography.internal.6.0.12.nupkg.sha512",
     "C:\\Users\\SEFA$$\\.nuget\\packages\\microsoft.aspnetcore.cryptography.keyderivation\\6.0.12\\microsoft.aspnetcore.cryptography.keyderivation.6.0.12.nupkg.sha512",

@@ -1,11 +1,25 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using denemeBlazor.Bussines.Interfaces;
+using Microsoft.AspNetCore.Mvc;
 
 namespace denemeBlazor.Controllers
 {
     public class HomeController : Controller
     {
-        public IActionResult Index()
+        readonly ICategoryService _categoryService;
+
+        public HomeController(ICategoryService categoryService)
         {
+            _categoryService = categoryService;
+        }
+
+        public async Task<IActionResult> Index()
+        {
+            var response = await _categoryService.GetAllAsync();
+            if (response.ResponseType == Common.ResponseType.Success)
+            {
+                return View(response.Data);
+            }
+            ViewBag.Message = response.Message;
             return View();
         }
     }

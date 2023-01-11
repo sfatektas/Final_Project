@@ -70,3 +70,7 @@ C:\Users\SEFA$$\source\repos\denemeBlazor\denemeBlazor\bin\Debug\net6.0\Autofac.
 C:\Users\SEFA$$\source\repos\denemeBlazor\denemeBlazor\bin\Debug\net6.0\Autofac.Extensions.DependencyInjection.dll
 C:\Users\SEFA$$\source\repos\denemeBlazor\denemeBlazor\bin\Debug\net6.0\AutoMapper.dll
 C:\Users\SEFA$$\source\repos\denemeBlazor\denemeBlazor\bin\Debug\net6.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
+C:\Users\SEFA$$\source\repos\denemeBlazor\denemeBlazor\bin\Debug\net6.0\FluentValidation.dll
+C:\Users\SEFA$$\source\repos\denemeBlazor\denemeBlazor\bin\Debug\net6.0\FluentValidation.AspNetCore.dll
+C:\Users\SEFA$$\source\repos\denemeBlazor\denemeBlazor\bin\Debug\net6.0\FluentValidation.DependencyInjectionExtensions.dll
+C:\Users\SEFA$$\source\repos\denemeBlazor\denemeBlazor\obj\Debug\net6.0\denemeBlazor.MvcApplicationPartsAssemblyInfo.cs
