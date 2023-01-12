@@ -1,0 +1,93 @@
+
+@{
+    Layout = "_Layout";
+}
+
+  <!-- Mobile menu -->
+  <div class="side-area fixed w-full h-full inset-0 z-50">
+    <!-- bg open -->
+    <div class="back-menu fixed bg-gray-900 bg-opacity-70 w-full h-full inset-x-0 top-0">
+      <div class="cursor-pointer text-white absolute right-64 p-2">
+        <svg class="bi bi-x" width="2rem" height="2rem" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+          <path fill-rule="evenodd" d="M11.854 4.146a.5.5 0 010 .708l-7 7a.5.5 0 01-.708-.708l7-7a.5.5 0 01.708 0z" clip-rule="evenodd"></path>
+          <path fill-rule="evenodd" d="M4.146 4.146a.5.5 0 000 .708l7 7a.5.5 0 00.708-.708l-7-7a.5.5 0 00-.708 0z" clip-rule="evenodd"></path>
+        </svg>
+      </div>
+    </div>
+
+    <!-- Mobile navbar -->
+    <nav id="mobile-nav" class="side-menu flex flex-col right-0 w-64 fixed top-0 bg-white dark:bg-gray-800 h-full overflow-auto z-40">
+      <div class="mb-auto">
+        <!--navigation-->
+        <nav class="relative flex flex-wrap">
+          <div class="text-center py-4 w-full font-bold border-b border-gray-100">MSS Haber</div>
+          <ul id="side-menu" class="w-full float-none flex flex-col">
+            <li class="relative">
+              <a href="#" class="block py-2 px-5 border-b border-gray-100 hover:bg-gray-50">Ana Sayfa</a>
+            </li>
+
+            <li class="relative">
+              <a href="#" class="block py-2 px-5 border-b border-gray-100 hover:bg-gray-50">Spor</a>
+            </li>
+
+            <li class="relative">
+              <a href="#" class="block py-2 px-5 border-b border-gray-100 hover:bg-gray-50">Siyaset</a>
+            </li>
+
+            <li class="relative">
+              <a href="#" class="block py-2 px-5 border-b border-gray-100 hover:bg-gray-50">Teknoloji</a>
+            </li>
+
+            <li class="relative">
+              <a href="#" class="block py-2 px-5 border-b border-gray-100 hover:bg-gray-50">Bilim</a>
+            </li>
+
+            <li class="relative">
+              <a href="#" class="block py-2 px-5 border-b border-gray-100 hover:bg-gray-50">Tatil</a>
+            </li>
+
+            <li class="relative">
+              <a href="#" class="block py-2 px-5 border-b border-gray-100 hover:bg-gray-50">Giriş Yap/Üye Ol</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+      <!-- copyright -->
+      <div class="py-4 px-6 text-sm mt-6 text-center">
+        <p>Copyright <a href="#">Tailnews</a> - All right reserved</p>
+      </div>
+    </nav>
+  </div><!-- End Mobile menu -->
+
+  <!-- =========={ MAIN }==========  -->
+  <main id="content">
+    <!-- advertisement -->
+    <div class="bg-gray-50 py-4 hidden">
+      <div class="xl:container mx-auto px-3 sm:px-4 xl:px-2">
+        <div class="mx-auto table text-center text-sm">
+          <a class="uppercase" href="#">Reklam</a>
+          <a href="#">
+            <img src="src/img/ads/ads_728.jpg" alt="advertisement area">
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- block news -->
+    <div class="bg-white py-6">
+      <div class="xl:container mx-auto px-3 sm:px-4 xl:px-2">
+        <div class="flex flex-row flex-wrap">
+          <div class="flex-shrink max-w-full w-full">
+            <div class="p-10 text-center">
+            	<div class="mb-4 text-center">
+                <h1 class="text-6xl text-gray-800 font-bold mb-2">404</h1>
+                <span class="inline-block h-0.5 w-20 bg-red-600"></span>
+              </div>
+              <h3 class="text-2xl mb-2">Sayfa Bulunamadı!</h3>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </main><!-- end main -->

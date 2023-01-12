@@ -12,14 +12,14 @@ namespace denemeBlazor.Controllers
             _categoryService = categoryService;
         }
 
-        public async Task<IActionResult> Index()
+        public IActionResult Index()
         {
-            var response = await _categoryService.GetAllAsync();
-            if (response.ResponseType == Common.ResponseType.Success)
-            {
-                return View(response.Data);
-            }
-            ViewBag.Message = response.Message;
+            //var response = await _categoryService.GetAllAsync();
+            //if (response.ResponseType == Common.ResponseType.Success)
+            //{
+            //    return View(response.Data);
+            //}
+            //ViewBag.Message = response.Message;
             return View();
         }
     }

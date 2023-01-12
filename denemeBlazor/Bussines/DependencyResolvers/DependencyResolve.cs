@@ -8,6 +8,7 @@ using SportsStore.Data.Context;
 using FluentValidation;
 using denemeBlazor.Bussines.Dtos;
 using denemeBlazor.Bussines.ValidationRules;
+using AutoMapper;
 
 namespace denemeBlazor.Bussines.DependencyResolvers
 {
@@ -29,8 +30,18 @@ x.UseSqlServer(builder.Configuration.GetConnectionString("LocalNewsDbConnection"
 
             //Auto-Mapper
 
-            builder.Services.AddAutoMapper(x=>
-            x.AddProfile(new CategoryProfile())
+            List<Profile> profiles = new List<Profile>() 
+            { 
+                new AppRoleProfile(),
+                new AppUserProfile(),
+                new CategoryProfile(),
+                new CommentProfile(),
+                new PostProfile()
+            };
+
+
+            builder.Services.AddAutoMapper(x =>
+            x.AddProfiles(profiles)
             );
 
         }
