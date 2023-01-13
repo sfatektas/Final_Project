@@ -1,0 +1,22 @@
+﻿@page "/admin/ındex"
+@{
+    Layout = null;
+}
+@namespace denemeBlazor.Pages
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@using Microsoft.AspNetCore.Authorization
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>MSS News Admin</title>
+    <link href="/lib/twitter-bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <base href="/" />
+</head>
+<body>
+    <p>Admin Index</p>
+    <component type="typeof(App)" render-mode="Server" />
+    <script src="/_framework/blazor.server.js"></script>
+</body>
+</html>

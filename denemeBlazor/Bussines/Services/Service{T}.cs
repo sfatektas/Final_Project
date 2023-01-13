@@ -9,7 +9,8 @@ using System.Linq.Expressions;
 
 namespace denemeBlazor.Services
 {
-    public class Service<CreateDto, ListDto, UpdateDto, T> where CreateDto : class , ICreateDto
+    public class Service<CreateDto, ListDto, UpdateDto, T> :IService<CreateDto , ListDto , UpdateDto , T>
+        where CreateDto : class , ICreateDto
         where ListDto : class, IListDto  
         where UpdateDto : class, IUpdateDto
         where T : BaseEntity
@@ -35,17 +36,18 @@ namespace denemeBlazor.Services
             else
                 return new Response<List<ListDto>>(ResponseType.NotFound, _mapper.Map<List<ListDto>>(data));
         }
-        public async Task<IResponse<ICreateDto>> CreateAsync(CreateDto dto)
+
+        public async Task<IResponse<CreateDto>> CreateAsync(CreateDto dto)
         {
             var result = await _createValidator.ValidateAsync(dto);
             if (result.IsValid)
             {
                 await _uow.GetRepository<T>().CreateAsync(_mapper.Map<T>(dto));
                 await _uow.SaveChangesAsync();
-                return new Response<ICreateDto>(ResponseType.Success, dto);
+                return new Response<CreateDto>(ResponseType.Success, dto);
             }
             else
-                return new Response<ICreateDto>(ResponseType.NotFound, dto);
+                return new Response<CreateDto>(ResponseType.NotFound, dto);
         }
 
         public async Task<IResponse<List<ListDto>>> GetAllAsync(Expression<Func<T, bool>> filter)
@@ -64,7 +66,7 @@ namespace denemeBlazor.Services
             return new Response<ListDto>(ResponseType.NotFound, "Böyle bir kayıta ulaşılamadı.", _mapper.Map<ListDto>(data));
         }
 
-        public async Task<IResponse> Remove(ListDto dto)
+        public async Task<IResponse> RemoveAsync(ListDto dto)
         {
             _uow.GetRepository<T>().Remove(_mapper.Map<T>(dto));
             await _uow.SaveChangesAsync();
@@ -84,5 +86,6 @@ namespace denemeBlazor.Services
                 return new Response<UpdateDto>(ResponseType.Error, $"Bir sorun oluştu Hata mesajı : {e.Message}", dto);
             }
         }
+
     }
 }

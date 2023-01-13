@@ -12,7 +12,7 @@ namespace SportsStore.Data.Configurations
             builder.Property(x => x.Title).IsRequired();
             builder.Property(x => x.Defination1).IsRequired();
             builder.Property(x => x.AppUserId).IsRequired();
-            builder.Property(x => x.CreatedTime).IsRequired();
+            builder.Property(x => x.CreatedTime).HasDefaultValueSql("getdate()");
             builder.Property(x => x.CategoryId).IsRequired();
 
             builder.HasMany(x => x.Comments).WithOne(x => x.Post).HasForeignKey(x => x.PostId);
