@@ -11,6 +11,8 @@
   <meta name="description" content="Tailwind CSS News Template">
 
   <link rel="stylesheet" href="src/css/style.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+
 
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;600;700&amp;display=swap" rel="stylesheet">
 
@@ -66,7 +68,7 @@
                   <a class="block py-3 px-6 border-b-2 border-transparent" href="#">Tatil</a>
                 </li>
                 <li class="relative border-l border-gray-800 hover:bg-gray-900">
-                  <a class="block py-3 px-6 border-b-2 border-transparent" href="#">Giriş Yap/Üye Ol</a>
+                  <a class="block py-3 px-6 border-b-2 border-transparent" href="posts.html">Admin Panel</a>
                 </li>
               </ul>
 
@@ -159,7 +161,7 @@
     </div>
 
     <!-- block news -->
-    <div class="bg-gray-50 py-6">
+    <div class="bg-gray-50 py-12">
       <div class="xl:container mx-auto px-3 sm:px-4 xl:px-2">
         <div class="flex flex-row flex-wrap">
           <!-- Left -->
@@ -174,8 +176,8 @@
                 <!-- Post content -->
                 <div class="leading-relaxed pb-4">
                   
-                  <h2 class="w-full float-left text-sm leading-normal mb-2 font-semibold text-gray-500 dark:text-gray-100">Kategori: Spor</h2>
-                  <h2 class="w-full float-left text-sm leading-normal mb-2 font-semibold text-gray-500 dark:text-gray-100">Tarih: GG/AA/YYYY</h2>
+                  <h2 class="w-full float-left text-sm leading-normal mb-2 font-semibold text-gray-800">Kategori: Spor</h2>
+                  <h2 class="w-full float-left text-sm leading-normal mb-2 font-semibold text-gray-800">Tarih: GG/AA/YYYY</h2>
                   <p class="mb-5">Nullam ut tempus mauris. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Vivamus libero dolor, condimentum eu augue et, placerat tempus risus. Quisque massa purus, ullamcorper eget ipsum et, eleifend suscipit mi. Duis auctor tortor a dui accumsan, sed semper nunc iaculis.</p>
 
                   <figure class="lg:float-right text-center lg:text-right mr-0 lg:-mr-4 ml-7 mb-7">
@@ -192,7 +194,7 @@
                   <p class="mb-5">Fusce vestibulum blandit justo non rhoncus. Maecenas eget felis id orci ultricies frin gilla. Aliquam suscipit enim felis. Praesent arcu dui, rutrum et molestie sed, volutpat auctor lorem. Fusce sit amet libero odio. Integer sed nisl turpis. Integer mollis sed est eget convallis. Interdum et malesuada fames ac ante ipsum primis in faucibus.</p>
                   
                   
-                  <h2 class="w-full float-right text-sm leading-normal mb-2 font-semibold text-gray-500 dark:text-gray-100">Yazar: Selim Günaydın</h2>
+                  <h2 class="w-full float-right text-sm leading-normal mb-2 font-semibold text-gray-800">Yazar: Selim Günaydın</h2>
                 </div>
               </div>
             </div>
@@ -233,7 +235,34 @@
               </div>
             </div>
           </div>
+          
         </div>
+        <div id="yorumlar">
+
+          <p class="font-bold text-3xl text-gray-800 px-2 border-l-4 border-red-600">Yorumlar</p>
+          <form class="w-3/5 flex flex-col mt-4" action="">
+            <p class="text-xl">Yorum Ekle</p>
+            <input type="text" placeholder="Yorum" class="p-4 mt-2">
+            <input type="submit" value="Gönder" class="bg-gray-800 text-white p-4 mt-2">
+          </form>
+        <div class="mt-8">
+          <div class="flex flex-col border w-3/5 p-4 mt-2">
+            <p class="text-xl ">@KullaniciAdi</p>
+            <p class="mt-2">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Soluta eligendi illum esse inventore porro dolore, eos asperiores rerum veritatis id reprehenderit tempora dolores laboriosam molestias, repudiandae excepturi veniam praesentium mollitia?</p>
+            <p class="text-gray-500 mt-2">13/01/2022</p>
+          </div>
+          <div class="flex flex-col border w-3/5 p-4 mt-2">
+            <p class="text-xl ">@KullaniciAdi</p>
+            <p class="mt-2">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Soluta eligendi illum esse inventore porro dolore, eos asperiores rerum veritatis id reprehenderit tempora dolores laboriosam molestias, repudiandae excepturi veniam praesentium mollitia?</p>
+            <p class="text-gray-500 mt-2">13/01/2022</p>
+          </div>
+          <div class="flex flex-col border w-3/5 p-4 mt-2">
+            <p class="text-xl ">@KullaniciAdi</p>
+            <p class="mt-2">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Soluta eligendi illum esse inventore porro dolore, eos asperiores rerum veritatis id reprehenderit tempora dolores laboriosam molestias, repudiandae excepturi veniam praesentium mollitia?</p>
+            <p class="text-gray-500 mt-2">13/01/2022</p>
+          </div>
+        </div>
+      </div>
       </div>
     </div>
   </main><!-- end main -->
