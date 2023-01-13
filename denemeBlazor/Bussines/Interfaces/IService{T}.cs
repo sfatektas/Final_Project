@@ -11,16 +11,20 @@ namespace denemeBlazor.Services.Interfaces
         where UpdateDto : class, IUpdateDto
         where T : BaseEntity
     {
+
         Task<IResponse<CreateDto>> CreateAsync(CreateDto model);
 
         Task<IResponse<UpdateDto>> UpdateAsync(UpdateDto model);
 
         Task<IResponse<ListDto>> GetByIdAsync(int id) ;
 
+        Task<IResponse<ListDto>> GetByFilterAsync(Expression<Func<T, bool>> filter);
+
         Task<IResponse> RemoveAsync(ListDto dto);
 
         Task<IResponse<List<ListDto>>> GetAllAsync();
 
         Task<IResponse<List<ListDto>>> GetAllAsync(Expression<Func<T, bool>> filter);
+    
     }
 }

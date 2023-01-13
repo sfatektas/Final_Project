@@ -87,5 +87,14 @@ namespace denemeBlazor.Services
             }
         }
 
+        public async Task<IResponse<ListDto>> GetByFilterAsync(Expression<Func<T, bool>> filter)
+        {
+                var data = await _uow.GetRepository<T>().GetByFilterAsync(filter);
+                if (data == null)
+                    return new Response<ListDto>(ResponseType.NotFound, _mapper.Map<ListDto>(data));
+            
+                return new Response<ListDto>(ResponseType.Success, _mapper.Map<ListDto>(data));
+                
+        }
     }
 }
