@@ -15,6 +15,8 @@ namespace denemeBlazor.Bussines.Dtos
 
         public string Password { get; set; }
 
+        public int AppRoleId { get; set; }
+
         public AppRoleListDto AppRole { get; set; }
     }
 }
