@@ -19,7 +19,6 @@ namespace denemeBlazor.Controllers
 
         public IActionResult Login()
         {
-
             return View();
         }
 
@@ -65,6 +64,13 @@ namespace denemeBlazor.Controllers
             }
             ModelState.AddModelError("", "Kullanıcı Adı veya Şifre Yanlış");
             return View(model);
+        }
+        [HttpGet]
+        public async Task<IActionResult> LogOut()
+        {
+            await HttpContext.SignOutAsync(
+    CookieAuthenticationDefaults.AuthenticationScheme);
+            return RedirectToAction("Login");
         }
     }
 }
