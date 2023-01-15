@@ -1,0 +1,50 @@
+﻿@page "/admin/adduser"
+@inject IAppUserService _appUserService
+@inject NavigationManager NavManager
+
+
+<main class="mt-16 px-32 ">
+    <p class="font-bold text-3xl text-gray-800 px-2 border-l-4 border-red-600 ">Kullanıcı Ekle</p>
+    <div class="mt-4">
+        <EditForm Model="AppUser" OnValidSubmit="SaveUser" class="flex flex-col py-4">
+            @if(AppUser != null)
+            {
+                <label class="pr-4 my-4 text-2xl">Kullanıcı Adı</label>
+                <ValidationMessage For="@(() => AppUser.Username)" />
+                <InputText @bind-Value="AppUser.Username" class="border p-4" placeholder="Kullanıcı Adı" />
+                <label class="pr-4 my-4 text-2xl">Adı</label>
+                <ValidationMessage For="@(() => AppUser.Username)" />
+                <InputText @bind-Value="AppUser.FirstName" class="border p-4" placeholder="Adı" />
+                <label class="pr-4 my-4 text-2xl">SoyAdı</label>
+                <ValidationMessage For="@(() => AppUser.LastName)" />
+                <InputText @bind-Value="AppUser.LastName" class="border p-4" placeholder="Soyadı" />
+                <p class="text-red-500 pt-4">NOT: Kullanıcı Şifresi Kullanıcı Soy Adıyla Aynıdır.</p>
+            }
+
+            <button class="bg-gray-900 mt-4 w-32 p-4 text-white rounded" type="submit">Save</button>
+
+        </EditForm>
+    </div>
+
+</main>
+
+@code {
+
+
+    public AppUserCreateDto AppUser = new();
+
+
+
+    public async Task SaveUser()
+    {
+        AppUser.Password = AppUser.LastName;
+        AppUser.AppRoleId = (int)RoleType.User;
+
+        dynamic response = await _appUserService.CreateAsync(AppUser);
+        if(response.ResponseType == ResponseType.Success)
+        {
+            NavManager.NavigateTo("/admin/users",true);
+        }
+    }
+
+}

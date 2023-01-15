@@ -9,6 +9,7 @@ using FluentValidation;
 using denemeBlazor.Bussines.Dtos;
 using denemeBlazor.Bussines.ValidationRules;
 using AutoMapper;
+using denemeBlazor.Bussines.Services;
 
 namespace denemeBlazor.Bussines.DependencyResolvers
 {
@@ -18,7 +19,8 @@ namespace denemeBlazor.Bussines.DependencyResolvers
         {
 
             builder.Services.AddDbContext<NewsDbContext>(x =>
-x.UseSqlServer(builder.Configuration.GetConnectionString("LocalNewsDbConnection")));
+x.UseSqlServer(builder.Configuration.GetConnectionString("LocalNewsDbConnection")).EnableSensitiveDataLogging());
+            builder.Services.AddScoped<AppUserService>();
 
             //Autofac
 

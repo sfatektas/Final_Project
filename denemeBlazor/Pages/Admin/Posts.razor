@@ -1,7 +1,52 @@
 ﻿@page "/admin/posts"
-<h3>Posts</h3>
+@inject IJSRuntime jsRuntime;
 
-<p>Posts Page</p>
+
+<main class="mt-16 px-32 ">
+    <div class="flex flex-row justify-between items-center">
+        <p class="font-bold text-3xl text-gray-800 px-2 border-l-4 border-red-600">Haberler</p>
+        <a href="/admin/addpost"><button class="bg-gray-900 text-white p-4 text-xl rounded">Haber Ekle</button></a>
+
+    </div>
+    <div class="flex flex-col my-4">
+
+        <div class="flex flex-row justify-between items-center border">
+            <img src="./src/img/dummy/img11.jpg" class="w-16">
+            <p class="text-xl px-4">Haber Başlığı</p>
+            <div>
+                <button class="bg-gray-700 text-white p-3">Düzenle</button>
+                <button class="bg-gray-500 text-white py-3 px-6">Sil</button>
+            </div>
+        </div>
+        <div class="flex flex-row justify-between items-center mt-2 border">
+            <img src="./src/img/dummy/img12.jpg" class="w-16">
+            <p class="text-xl px-4">Haber Başlığı</p>
+            <div>
+                <button class="bg-gray-700 text-white p-3">Düzenle</button>
+                <button class="bg-gray-500 text-white py-3 px-6">Sil</button>
+            </div>
+        </div>
+        <div class="flex flex-row justify-between items-center mt-2 border">
+            <img src="./src/img/dummy/img13.jpg" class="w-16">
+            <p class="text-xl px-4">Haber Başlığı</p>
+            <div>
+                <button class="bg-gray-700 text-white p-3">Düzenle</button>
+                <button class="bg-gray-500 text-white py-3 px-6">Sil</button>
+            </div>
+        </div>
+        <div class="flex flex-row justify-between items-center mt-2 border">
+            <img src="./src/img/dummy/img14.jpg" class="w-16">
+            <p class="text-xl px-4">Haber Başlığı</p>
+            <div>
+                <button class="bg-gray-700 text-white p-3">Düzenle</button>
+                <button class="bg-gray-500 text-white py-3 px-6">Sil</button>
+            </div>
+        </div>
+    </div>
+
+</main>
+
 @code {
+
 
 }

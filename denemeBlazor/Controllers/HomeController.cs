@@ -31,5 +31,9 @@ namespace denemeBlazor.Controllers
             //ViewBag.Message = response.Message;
             return View(response.Message) ;
         }
+        public IActionResult Page()
+        {
+            return View();
+        }
     }
 }

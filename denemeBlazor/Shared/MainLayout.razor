@@ -1,11 +1,57 @@
 ﻿@inherits LayoutComponentBase
 
-<PageTitle>denemeBlazor</PageTitle>
+<PageTitle>AdminPanel</PageTitle>
 
-<div class="page">
-    <div class="sidebar">
-        <NavMenu />
+<div>
+    <div>
+        <!-- search form & mobile nav -->
+        <div class="flex flex-row items-center text-gray-300">
+
+
+            <div class="relative hover:bg-gray-800 block lg:hidden">
+                <button type="button" class="menu-mobile block py-3 px-6 border-b-2 border-transparent">
+                    <span class="sr-only">Mobile menu</span>
+                    <svg class="inline-block h-6 w-6 mr-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg> Menu
+                </button>
+            </div>
+        </div>
     </div>
+    <header class="fixed top-0 left-0 right-0 z-50">
+        <nav class="bg-black">
+            <div class="xl:container mx-auto px-3 sm:px-4 xl:px-2">
+                <div class="flex justify-between ">
+                    <div class="mx-w-10 font-bold text-2xl capitalize text-white flex items-center"><a href="index.html">MSS Haber</a></div>
+
+                    <div  @onclick="ToggleNavMenu">
+                        <div class="flex flex-row ">
+                            <!-- nav menu -->
+                            <ul class="navbar hidden lg:flex lg:flex-row text-gray-400 text-sm items-center font-bold ">
+                                <li class="active relative border-l border-gray-800 hover:bg-gray-900">
+                                    <NavLink class="block py-3 px-6 border-b-2 border-transparent" href="/">Ana Sayfa</NavLink>
+                                </li>
+                                <li class="relative border-l border-gray-800 hover:bg-gray-900">
+                                    <NavLink class="block py-3 px-6 border-b-2 border-transparent" href="/admin/posts">Haberler</NavLink>
+                                </li>
+                                <li class="relative border-l border-gray-800 hover:bg-gray-900">
+                                    <NavLink class="block py-3 px-6 border-b-2 border-transparent" href="/admin/comments">Yorumlar</NavLink>
+                                </li>
+                                <li class="relative border-l border-gray-800 hover:bg-gray-900">
+                                    <NavLink class="block py-3 px-6 border-b-2 border-transparent" href="/admin/users">Kullanıcılar</NavLink>
+                                </li>
+                                <li class="relative border-l border-gray-800 hover:bg-gray-900">
+                                    <NavLink class="block py-3 px-6 border-b-2 border-transparent" href="/Account/Logout">Çıkış Yap</NavLink>
+                                </li>
+                            </ul>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </nav>
+    </header>
 
     <main>
         <div class="top-row px-4">
@@ -16,4 +62,18 @@
             @Body
         </article>
     </main>
+
 </div>
+
+@code {
+    private bool collapseNavMenu = true;
+
+    private string NavMenuCssClass => collapseNavMenu ? "collapse" : null;
+
+    private void ToggleNavMenu()
+    {
+        collapseNavMenu = !collapseNavMenu;
+    }
+}
+
+

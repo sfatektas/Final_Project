@@ -19,8 +19,24 @@ build_property._RazorSourceGeneratorDebug =
 build_metadata.AdditionalFiles.TargetPath = QXBwLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/SEFA$$/source/repos/denemeBlazor/denemeBlazor/Pages/Admin/AddPost.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5cQWRkUG9zdC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/SEFA$$/source/repos/denemeBlazor/denemeBlazor/Pages/Admin/AddUser.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5cQWRkVXNlci5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/SEFA$$/source/repos/denemeBlazor/denemeBlazor/Pages/Admin/Commnets.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5cQ29tbW5ldHMucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/SEFA$$/source/repos/denemeBlazor/denemeBlazor/Pages/Admin/EditPost.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5cRWRpdFBvc3QucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/SEFA$$/source/repos/denemeBlazor/denemeBlazor/Pages/Admin/EditUser.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5cRWRpdFVzZXIucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/SEFA$$/source/repos/denemeBlazor/denemeBlazor/Pages/Admin/Posts.razor]

@@ -10,6 +10,7 @@ namespace denemeBlazor.Bussines.Mapper
         {
             CreateMap<AppUser, AppUserListDto>().ReverseMap();
             CreateMap<AppUser, AppUserCreateDto>().ReverseMap();
+            CreateMap<AppUserListDto, AppUserUpdateDto>().ReverseMap();
             CreateMap<AppUser, AppUserUpdateDto>().ReverseMap();
 
         }

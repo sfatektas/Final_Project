@@ -47,7 +47,7 @@ namespace denemeBlazor.Controllers
                         AllowRefresh = true,
                         // Refreshing the authentication session should be allowed.
 
-                        ExpiresUtc = DateTimeOffset.UtcNow.AddMinutes(10),
+                        ExpiresUtc = DateTimeOffset.UtcNow.AddMinutes(20),
 
                     };
 
@@ -57,7 +57,7 @@ namespace denemeBlazor.Controllers
                         authProperties);
                     if (data.AppRole.Id == (int)RoleType.Admin)
                     {
-                        return Redirect("/Admin/Panel");
+                        return Redirect("/admin/posts");
                     }
                     return RedirectToAction("Index", "Home");
                 }

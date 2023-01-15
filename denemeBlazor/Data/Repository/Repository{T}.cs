@@ -27,7 +27,7 @@ namespace denemeBlazor.Data.Repository
 
         public async Task<List<T>> GetAllAsync()
         {
-            var list = await _context.Set<T>().ToListAsync();
+            var list = await _context.Set<T>().AsNoTracking().ToListAsync();
             return list;
         }
 

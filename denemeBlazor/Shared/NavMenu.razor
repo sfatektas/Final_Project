@@ -1,35 +1,46 @@
-﻿<div class="top-row ps-3 navbar navbar-dark">
-    <div class="container-fluid">
-        <a class="navbar-brand" href="">denemeBlazor</a>
-        <button title="Navigation menu" class="navbar-toggler" @onclick="ToggleNavMenu">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-    </div>
-</div>
+﻿
 
 <div class="@NavMenuCssClass" @onclick="ToggleNavMenu">
-    <nav class="flex-column">
-        <div class="nav-item px-3">
-            <NavLink class="nav-link" href="" Match="NavLinkMatch.All">
-                <span class="oi oi-home" aria-hidden="true"></span> Home
-            </NavLink>
-        </div>
-        <div class="nav-item px-3">
-            <NavLink class="nav-link" href="/admin/posts">
-                <span class="oi oi-plus" aria-hidden="true"></span> Posts
-            </NavLink>
-        </div>
-        <div class="nav-item px-3">
-            <NavLink class="nav-link" href="/admin/users">
-                <span class="oi oi-list-rich" aria-hidden="true"></span> Users
-            </NavLink>
-        </div>
-        <div class="nav-item px-3">
-            <NavLink class="nav-link" href="/admin/comments">
-                <span class="oi oi-list-rich" aria-hidden="true"></span> Comments
-            </NavLink>
-        </div>
-    </nav>
+    @*    <nav class="flex-column">
+    <div class="nav-item px-3">
+    <NavLink class="nav-link" href="" Match="NavLinkMatch.All">
+    <span class="oi oi-home" aria-hidden="true"></span> Home
+    </NavLink>
+    </div>
+    <div class="nav-item px-3">
+    <NavLink class="nav-link" href="/admin/posts">
+    <span class="oi oi-plus" aria-hidden="true"></span> Posts
+    </NavLink>
+    </div>
+    <div class="nav-item px-3">
+    <NavLink class="nav-link" href="/admin/users">
+    <span class="oi oi-list-rich" aria-hidden="true"></span> Users
+    </NavLink>
+    </div>
+    <div class="nav-item px-3">
+    <NavLink class="nav-link" href="/admin/comments">
+    <span class="oi oi-list-rich" aria-hidden="true"></span> Comments
+    </NavLink>
+    </div>
+    </nav>*@
+    <div class="flex flex-row ">
+        <!-- nav menu -->
+        <ul class="navbar hidden lg:flex lg:flex-row text-gray-400 text-sm items-center font-bold ">
+            <li class="active relative border-l border-gray-800 hover:bg-gray-900">
+                <NavLink class="block py-3 px-6 border-b-2 border-transparent" href="/">Ana Sayfa</NavLink>
+            </li>
+            <li class="relative border-l border-gray-800 hover:bg-gray-900">
+                <NavLink class="block py-3 px-6 border-b-2 border-transparent" href="/admin/posts">Haberler</NavLink>
+            </li>
+            <li class="relative border-l border-gray-800 hover:bg-gray-900">
+                <NavLink class="block py-3 px-6 border-b-2 border-transparent" href="/admin/comments">Yorumlar</NavLink>
+            </li>
+            <li class="relative border-l border-gray-800 hover:bg-gray-900">
+                <NavLink class="block py-3 px-6 border-b-2 border-transparent" href="/admin/users">Kullanıcılar</NavLink>
+            </li>
+        </ul>
+
+    </div>
 </div>
 
 @code {

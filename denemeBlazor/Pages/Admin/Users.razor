@@ -1,6 +1,60 @@
 ﻿@page "/admin/users"
-<h3>Users</h3>
+
+@inject IAppUserService _appUserservice
+@inject NavigationManager NavManager
+@inject IJSRuntime jsRuntime
+
+
+<main class="mt-16 px-32 ">
+    <div class="flex flex-row justify-between items-center">
+        <p class="font-bold text-3xl text-gray-800 px-2 border-l-4 border-red-600">Kullanıcılar</p>
+        <a href="admin/adduser"><button class="bg-gray-900 text-white p-4 text-xl rounded">Kullanıcı Ekle</button></a>
+
+    </div>
+    <div class="flex flex-col my-4">
+        @if(AppUsers != null) @*İlk seferde yüklenmediği için null referance değeri hatası veriyor.*@
+        {
+            @foreach (var user in AppUsers)
+            {
+                <div class="flex flex-row justify-between items-center mt-2 border">
+                    <p class="text-xl px-4">@user.Username</p>
+                    <div>
+                        <button @onclick="()=>Edit(user.Id)" class="bg-gray-700 text-white p-3">Düzenle</button>
+                        <button @onclick="()=>Remove(user)" class="bg-gray-500 text-white py-3 px-6">Sil</button>
+                    </div>
+                </div>
+            }
+        }
+    </div>
+
+</main>
 
 @code {
 
+    public List<AppUserListDto> AppUsers;
+
+    protected async override Task OnInitializedAsync()
+    {
+        var response = await _appUserservice.GetAllAsync(x=> x.AppRole.Id ==(int)RoleType.User);
+
+        AppUsers =  response.Data;
+
+    }
+    public async Task Remove(AppUserListDto dto)
+    {
+        var result = await jsRuntime.InvokeAsync<bool>("confirm", "Kullanıcıyı silmek istiyor musunuz?");
+        if (result)
+        {
+            var response = await _appUserservice.RemoveAsync(dto);
+            if (response.ResponseType == ResponseType.Success)
+            {
+                NavManager.NavigateTo("/admin/users",true);
+            }
+        }
+
+    }
+    public void Edit(int id)
+    {
+        NavManager.NavigateTo($"/admin/edituser/{id}");
+    }
 }

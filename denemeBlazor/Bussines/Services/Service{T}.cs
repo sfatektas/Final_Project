@@ -1,9 +1,11 @@
 ﻿using AutoMapper;
+using denemeBlazor.Bussines.Extensions;
 using denemeBlazor.Common;
 using denemeBlazor.Common.Interfaces;
 using denemeBlazor.Data.Interfaces;
 using denemeBlazor.Services.Interfaces;
 using FluentValidation;
+using Microsoft.AspNetCore.Connections.Features;
 using SportsStore.Data.Entities;
 using System.Linq.Expressions;
 
@@ -47,7 +49,7 @@ namespace denemeBlazor.Services
                 return new Response<CreateDto>(ResponseType.Success, dto);
             }
             else
-                return new Response<CreateDto>(ResponseType.NotFound, dto);
+                return new Response<CreateDto>(ResponseType.ValidationError,"validasyon hatası", dto, result.GetValidationErrors());
         }
 
         public async Task<IResponse<List<ListDto>>> GetAllAsync(Expression<Func<T, bool>> filter)
