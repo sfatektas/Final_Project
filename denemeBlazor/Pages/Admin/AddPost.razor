@@ -1,24 +1,50 @@
 ﻿@page "/admin/addpost"
+@using Microsoft.AspNetCore.Mvc.Rendering
+@inject IPostService _postService
+@inject ICommentService _commentService
+@inject IJSRuntime jsRuntime
+@inject NavigationManager NavManager
+@inject AuthenticationStateProvider AuthenticationStateProvider
+
 
 <main class="mt-16 px-32 ">
     <p class="font-bold text-3xl text-gray-800 px-2 border-l-4 border-red-600 ">Haber Ekle</p>
     <div class="mt-4">
-        <form class="flex flex-col py-4">
+        <EditForm Model="PostAddModelInstance" OnValidSubmit="AddPost" class="flex flex-col py-4">
             <label class="pr-4 my-4 text-2xl">Başlık</label>
-            <input class="border p-4" placeholder="Başlık" />
+            <InputText @bind-Value="PostAddModelInstance.Title" class="border p-4" placeholder="Başlık" />
             <label class="pr-4 my-4 text-2xl">Ön İçerik</label>
-            <input class="border p-4" placeholder="Ön İçerik" />
+            <InputText @bind-Value="PostAddModelInstance.Defination1" class="border p-4" placeholder="Ön İçerik" />
             <label class="pr-4 my-4 text-2xl">İçerik</label>
-            <textarea placeholder="Haber Yazısı" class="border p-4" rows="4" cols="50"></textarea>
+            <InputTextArea @bind-Value="PostAddModelInstance.Defination2" placeholder="Haber Yazısı" class="border p-4" rows="4" cols="50"></InputTextArea>
             <div class="flex flex-row justify-between items-center">
-                <input class="mt-4" type="file" />
-                <input class="bg-gray-900 mt-4 w-32 p-4 text-white rounded" type="submit" value="Gönder">
+                <InputFile @bind-Value="PostAddModelInstance.MediaPath" class="mt-4" type="file" />
+                <button class="bg-gray-900 mt-4 w-32 p-4 text-white rounded" type="submit" value="Gönder"></button>
             </div>
 
-        </form>
+        </EditForm>
     </div>
 
 </main>
 @code {
+    readonly PostAddModel PostAddModelInstance;
+    public SelectList selectList;
 
+
+    protected async override Task OnInitializedAsync()
+    {
+        var response = await _commentService.GetAllAsync();
+        if(response.ResponseType == ResponseType.Success)
+        {
+            selectList = new SelectList(response.Data, "Id", "Defination");
+            var provider = await AuthenticationStateProvider.GetAuthenticationStateAsync();
+            provider.User.Claims.Where(x=>x.ClaimType == ClaimType.)
+        }
+
+    }
+
+    //over
+    public Task AddPost(PostAddModel model)
+    {
+    }
 }
