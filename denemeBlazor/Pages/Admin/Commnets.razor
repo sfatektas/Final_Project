@@ -1,48 +1,59 @@
 ﻿@page "/admin/comments"
+@inject ICommentService _commentService
+@inject IJSRuntime jsRuntime
+@inject NavigationManager NavManager
 
 
-     <main class="mt-16 px-32 my-4 ">
+<main class="mt-16 px-32 my-4 ">
 
-        <p class="font-bold text-3xl text-gray-800 px-2 border-l-4 border-red-600">Yorumlar</p>
+    <p class="font-bold text-3xl text-gray-800 px-2 border-l-4 border-red-600">Yorumlar</p>
+    <div class="flex flex-col my-4">
+        @{
+            if(Comments !=null)
+            {
+                foreach (var comment in Comments)
+                {
+                    <div class="flex flex-row justify-between items-center border">
+                        <p class="px-4 text-xl">@comment.AppUser.Username</p>
+                        <p class="px-4 text-xl"><b>@comment.Post.Title</b></p>
+                        <p class="text-xl px-4">@comment.Content_</p>
+                        <div>
+                            <button @onclick="()=>Remove(comment)" class="bg-gray-500 text-white py-3 px-6">Sil</button>
+                        </div>
+                    </div>
+                }
+            }
+            else
+            {
+                <p>Henüz Yorum yapılmadı.</p>
+            }
+        }
+    </div>
+</main>
 
-        <div class="flex flex-col my-4">
-          <div class="flex flex-row justify-between items-center border">
-            <p class="px-4 text-xl">Haber Başlığı</p>
-            <p class="px-4 text-xl">Kullanıcı Adı</p>
-            <p class="text-xl px-4">Yorum Yorum</p>
-            <div>
-            <button class="bg-gray-500 text-white py-3 px-6">Sil</button>
-        </div>
-          </div>
-          <div class="flex flex-row justify-between items-center border mt-2">
-            <p class="px-4 text-xl">Haber Başlığı</p>
-            <p class="px-4 text-xl">Kullanıcı Adı</p>
-            <p class="text-xl px-4">Yorum Yorum</p>
-            <div>
-            <button class="bg-gray-500 text-white py-3 px-6">Sil</button>
-        </div>
-          </div>   
-           <div class="flex flex-row justify-between items-center border mt-2">
-            <p class="px-4 text-xl">Haber Başlığı</p>
-            <p class="px-4 text-xl">Kullanıcı Adı</p>
-            <p class="text-xl px-4">Yorum Yorum</p>
-            <div>
-            <button class="bg-gray-500 text-white py-3 px-6">Sil</button>
-        </div>
-          </div>
-          <div class="flex flex-row justify-between items-center border mt-2">
-            <p class="px-4 text-xl">Haber Başlığı</p>
-            <p class="px-4 text-xl">Kullanıcı Adı</p>
-            <p class="text-xl px-4">Yorum Yorum</p>
-            <div>
-            <button class="bg-gray-500 text-white py-3 px-6">Sil</button>
-        </div>
-          </div>
-        </div>
-
-     </main>
-   
 
 @code {
+    public List<CommentListDto> Comments;
 
+    protected async override Task OnInitializedAsync()
+    {
+        var response = await _commentService.GetAllQueryable();
+        if(response.ResponseType == ResponseType.Success)
+        {
+            Comments = response.Data;
+        }
+    }
+
+    public async Task Remove(CommentListDto dto)
+    {
+        var result = await jsRuntime.InvokeAsync<bool>("confirm", "Yorumu silmek istiyor musunuz?");
+        if (result)
+        {
+            var response = await _commentService.RemoveAsync(dto);
+            if (response.ResponseType == ResponseType.Success)
+            {
+                NavManager.NavigateTo("/admin/comments", true);
+            }
+        }
+    }
 }

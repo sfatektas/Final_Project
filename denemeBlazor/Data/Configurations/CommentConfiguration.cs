@@ -12,7 +12,7 @@ namespace denemeBlazor.Data.Configurations
             builder.Property(x => x.PostId).IsRequired();
             builder.Property(x => x.AppUserId).IsRequired();
             builder.Property(x => x.Content_).IsRequired();
-            builder.Property(x => x.CreatedTime).IsRequired();
+            builder.Property(x => x.CreatedTime).HasDefaultValueSql("getdate()");
 
             builder.HasOne(x => x.Post).WithMany(x => x.Comments).HasForeignKey(x => x.PostId);
             
