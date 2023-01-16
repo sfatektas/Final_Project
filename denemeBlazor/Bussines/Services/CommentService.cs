@@ -26,10 +26,19 @@ namespace denemeBlazor.Bussines.Services
             var comments = await _uow.GetRepository<Comment>().GetQueryable().Include(x=>x.AppUser).Include(x=>x.Post).AsNoTracking().ToListAsync();
             return new Response<List<CommentListDto>>(ResponseType.Success, _mapper.Map<List<CommentListDto>>(comments));
         }
+        public async Task<IResponse<List<CommentListDto>>> GetNewsAllCommantsWithPostId(int id)
+        {
+            var comments = await _uow.GetRepository<Comment>().GetQueryable().Include(x => x.AppUser).Include(x => x.Post).Where(x=>x.PostId==id).AsNoTracking().ToListAsync();
+            return new Response<List<CommentListDto>>(ResponseType.Success, _mapper.Map<List<CommentListDto>>(comments));
+        }
+
 
         public Task<IResponse<CommentListDto>> GetQueryable()
         {
             throw new NotImplementedException();
         }
+
+        
+
     }
 }
