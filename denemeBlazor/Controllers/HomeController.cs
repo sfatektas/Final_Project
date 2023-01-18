@@ -1,5 +1,7 @@
-﻿using denemeBlazor.Bussines.Interfaces;
+﻿using denemeBlazor.Bussines.Dtos;
+using denemeBlazor.Bussines.Interfaces;
 using denemeBlazor.Common;
+using FluentValidation;
 using Microsoft.AspNetCore.Mvc;
 using System.Runtime.CompilerServices;
 
@@ -9,11 +11,15 @@ namespace denemeBlazor.Controllers
     {
         readonly ICategoryService _categoryService;
         readonly IPostService _postService;
+        readonly ICommentService _commentService;
+        readonly IValidator<CommentCreateDto> _validator;
 
-        public HomeController(ICategoryService categoryService, IPostService postService)
+        public HomeController(ICategoryService categoryService, IPostService postService, IValidator<CommentCreateDto> createDtoValidator, ICommentService commentService)
         {
             _categoryService = categoryService;
             _postService = postService;
+            _validator = createDtoValidator;
+            _commentService = commentService;
         }
 
         public async Task<IActionResult> Index()
@@ -34,6 +40,22 @@ namespace denemeBlazor.Controllers
         public IActionResult Page()
         {
             return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> CommentAdd(CommentCreateDto commentCreateDto)
+        {
+            var result = _validator.Validate(commentCreateDto);
+            if (result.IsValid)
+            {
+                var response = await _commentService.CreateAsync(commentCreateDto);
+                if(response.ResponseType == ResponseType.Success)
+                {
+                    ViewBag.message = "İşlem Başarılı";
+                    return RedirectToAction("Page", "Home");
+                }
+            }
+            return RedirectToAction("Page", "Home");
         }
     }
 }
