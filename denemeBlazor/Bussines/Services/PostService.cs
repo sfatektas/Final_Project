@@ -29,7 +29,7 @@ namespace denemeBlazor.Bussines.Services
 
         public async Task<IResponse<PostListDto>> GetQueryable(int id)
         {
-            var data =  _uow.GetRepository<Post>().GetQueryable().Where(x=> x.Id == id).Include(x => x.Category).Include(x=>x.AppUser).Include(x => x.Comments).FirstOrDefault();
+            var data =  _uow.GetRepository<Post>().GetQueryable().Where(x=> x.Id == id).Include(x => x.Category).Include(x=>x.AppUser).FirstOrDefault();
             return new Response<PostListDto>(ResponseType.Success, _mapper.Map<PostListDto>( data));
         }
     }
