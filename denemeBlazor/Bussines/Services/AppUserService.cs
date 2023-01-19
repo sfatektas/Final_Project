@@ -28,7 +28,7 @@ namespace denemeBlazor.Bussines.Services
             return new Response<List<AppUserListDto>>(ResponseType.Success, _mapper.Map<List<AppUserListDto>>(await data.ToListAsync()));
         }
 
-        public Task<IResponse<AppUserListDto>> GetQueryable()
+        public Task<IResponse<AppUserListDto>> GetQueryable(int id)
         {
             throw new NotImplementedException();
         }

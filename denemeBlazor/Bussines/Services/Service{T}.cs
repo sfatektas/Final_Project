@@ -6,6 +6,7 @@ using denemeBlazor.Data.Interfaces;
 using denemeBlazor.Services.Interfaces;
 using FluentValidation;
 using Microsoft.AspNetCore.Connections.Features;
+using Microsoft.EntityFrameworkCore;
 using SportsStore.Data.Entities;
 using System.Linq.Expressions;
 
@@ -94,9 +95,9 @@ namespace denemeBlazor.Services
                 var data = await _uow.GetRepository<T>().GetByFilterAsync(filter);
                 if (data == null)
                     return new Response<ListDto>(ResponseType.NotFound, _mapper.Map<ListDto>(data));
-            
-                return new Response<ListDto>(ResponseType.Success, _mapper.Map<ListDto>(data));
-                
+
+            return new Response<ListDto>(ResponseType.Success, _mapper.Map<ListDto>(data));
         }
+        
     }
 }

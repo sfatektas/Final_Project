@@ -61,5 +61,7 @@ namespace denemeBlazor.Data.Repository
         {
             return _context.Set<T>().AsQueryable().Where(x => x.Id == id);
         }
+       
+
     }
 }

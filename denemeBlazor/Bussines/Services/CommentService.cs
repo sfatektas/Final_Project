@@ -6,6 +6,7 @@ using denemeBlazor.Common.Interfaces;
 using denemeBlazor.Data.Interfaces;
 using denemeBlazor.Services;
 using FluentValidation;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using SportsStore.Data.Entities;
 
@@ -32,13 +33,9 @@ namespace denemeBlazor.Bussines.Services
             return new Response<List<CommentListDto>>(ResponseType.Success, _mapper.Map<List<CommentListDto>>(comments));
         }
 
-
-        public Task<IResponse<CommentListDto>> GetQueryable()
+        public Task<IResponse<CommentListDto>> GetQueryable(int id)
         {
             throw new NotImplementedException();
         }
-
-        
-
     }
 }

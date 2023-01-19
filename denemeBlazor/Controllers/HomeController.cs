@@ -1,5 +1,7 @@
-﻿using denemeBlazor.Bussines.Interfaces;
+﻿using denemeBlazor.Bussines.Dtos;
+using denemeBlazor.Bussines.Interfaces;
 using denemeBlazor.Common;
+using FluentValidation;
 using Microsoft.AspNetCore.Mvc;
 using System.Runtime.CompilerServices;
 
@@ -9,11 +11,15 @@ namespace denemeBlazor.Controllers
     {
         readonly ICategoryService _categoryService;
         readonly IPostService _postService;
+        readonly ICommentService _commentService;
+        readonly IValidator<CommentCreateDto> _validator;
 
-        public HomeController(ICategoryService categoryService, IPostService postService)
+        public HomeController(ICategoryService categoryService, IPostService postService, IValidator<CommentCreateDto> createDtoValidator, ICommentService commentService)
         {
             _categoryService = categoryService;
             _postService = postService;
+            _validator = createDtoValidator;
+            _commentService = commentService;
         }
 
         public async Task<IActionResult> Index()
@@ -31,9 +37,33 @@ namespace denemeBlazor.Controllers
             //ViewBag.Message = response.Message;
             return View(response.Message) ;
         }
-        public IActionResult Page()
+        public async Task<IActionResult> Page(int id)
         {
+
+            var response =await _postService.GetQueryable(id);
+            if(response.ResponseType == ResponseType.Success)
+            {
+                return View(response.Data);
+            }
             return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> CommentAdd(CommentCreateDto commentCreateDto)
+        {
+            var result = _validator.Validate(commentCreateDto);
+            commentCreateDto.AppUserId = 1;
+            
+            if (result.IsValid)
+            {
+                var response = await _commentService.CreateAsync(commentCreateDto);
+                if(response.ResponseType == ResponseType.Success)
+                {
+                    ViewBag.message = "İşlem Başarılı";
+                    return RedirectToAction("Page", "Home",commentCreateDto.PostId);
+                }
+            }
+            return RedirectToAction("Page", "Home");
         }
     }
 }

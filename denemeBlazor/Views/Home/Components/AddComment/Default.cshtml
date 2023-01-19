@@ -1,0 +1,11 @@
+﻿@model CommentCreateDto
+
+<div id="yorumlar">
+    <form class="w-3/5 flex flex-col mt-4" method="post" asp-action="CommentAdd" asp-controller="Home">
+        <p class="text-xl">Yorum Ekle</p>
+        <input type="hidden" asp-for="@Model.PostId" value="@Model.PostId" />
+        <input type="text" placeholder="Yorum" asp-for=@Model.Content_ class="p-4 mt-2">
+        <input type="submit" value="Gönder" class="bg-gray-800 text-white p-4 mt-2">
+    </form>
+    <div asp-validation-summary="All"></div>
+</div>
