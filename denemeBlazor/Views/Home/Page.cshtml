@@ -1,4 +1,4 @@
-
+@model PostListDto
 @{
     Layout = "_Layout";
 }
@@ -19,25 +19,21 @@
                         <!-- Post content -->
                         <div class="leading-relaxed pb-4">
 
-                            <h2 class="w-full float-left text-sm leading-normal mb-2 font-semibold text-gray-800">Kategori: Spor</h2>
-                            <h2 class="w-full float-left text-sm leading-normal mb-2 font-semibold text-gray-800">Tarih: GG/AA/YYYY</h2>
-                            <p class="mb-5">Nullam ut tempus mauris. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Vivamus libero dolor, condimentum eu augue et, placerat tempus risus. Quisque massa purus, ullamcorper eget ipsum et, eleifend suscipit mi. Duis auctor tortor a dui accumsan, sed semper nunc iaculis.</p>
+                            <h2 class="w-full float-left text-sm leading-normal mb-2 font-semibold text-gray-800">Kategori: @Model.Category.Defination</h2>
+                            <h2 class="w-full float-left text-sm leading-normal mb-2 font-semibold text-gray-800">Tarih: @Model.CreatedTime</h2>
+                            <bolderTagHelper class="mb-5" bold-data="@Model.Title"></bolderTagHelper>
+                            
 
                             <figure class="lg:float-right text-center lg:text-right mr-0 lg:-mr-4 ml-7 mb-7">
-                                <img class="max-w-full h-auto mx-auto" src="~/src/img/dummy/post3.jpg" alt="Image description">
-
+                                <img class="max-w-full h-auto mx-auto" src="@Model.MediaPath" alt="@Model.Title">
                             </figure>
 
-                            <p class="mb-5">Mauris eget lectus et nisi commodo tristique. Aenean eget ornare dui. Maecenas bibendum lacus ante, vitae pellentesque ex elementum convallis.</p>
-                            <p class="mb-5">Mauris lobortis leo a neque congue, quis pretium libero efficitur. Sed congue ipsum ac mollis egestas. Sed venenatis nisl nibh, in blandit nisi varius sed. Pellentesque molestie lacus ut justo molestie tristique. Curabitur pretium ipsum ex, a rhoncus arcu tempus ut. Fusce elementum placerat tellus id blandit.</p>
+                            <Definitaion1 class="mb-5" def-data="@Model.Defination1"></Definitaion1>
+                            <p class="mb-5">@Model.Defination2</p>
 
-                            <p class="mb-5">Sed condimentum neque ligula, id dapibus enim ornare id. Duis porttitor, risus vehicula convallis sagittis, ligula nisi iaculis libero.</p>
+  
 
-                            <p class="mb-5">Morbi at lacinia risus. Donec vitae justo sed augue sollicitudin dignissim ut vitae ipsum. Proin at imperdiet ante, non blandit mauris. Nullam eu lobortis justo.</p>
-                            <p class="mb-5">Fusce vestibulum blandit justo non rhoncus. Maecenas eget felis id orci ultricies frin gilla. Aliquam suscipit enim felis. Praesent arcu dui, rutrum et molestie sed, volutpat auctor lorem. Fusce sit amet libero odio. Integer sed nisl turpis. Integer mollis sed est eget convallis. Interdum et malesuada fames ac ante ipsum primis in faucibus.</p>
-
-
-                            <h2 class="w-full float-right text-sm leading-normal mb-2 font-semibold text-gray-800">Yazar: Selim Günaydın</h2>
+                            <h2 class="w-full float-right text-sm leading-normal mb-2 font-semibold text-gray-800">Yazar: @Model.AppUser.FirstName</h2>
                         </div>
                     </div>
                 </div>
@@ -88,4 +84,4 @@
         </div>
     </div>
 </div>
-  </main><!-- end main -->
+

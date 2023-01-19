@@ -37,15 +37,23 @@ namespace denemeBlazor.Controllers
             //ViewBag.Message = response.Message;
             return View(response.Message) ;
         }
-        public IActionResult Page()
+        public async Task<IActionResult> Page(int id)
         {
-            return View();
+
+            var response =await _postService.GetQueryable(id);
+            if(response.ResponseType == ResponseType.Success)
+            {
+                return View(response.Data);
+            }
+            return NotFound();
         }
 
         [HttpPost]
         public async Task<IActionResult> CommentAdd(CommentCreateDto commentCreateDto)
         {
             var result = _validator.Validate(commentCreateDto);
+            commentCreateDto.AppUserId = 1;
+            
             if (result.IsValid)
             {
                 var response = await _commentService.CreateAsync(commentCreateDto);

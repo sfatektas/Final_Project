@@ -20,7 +20,7 @@ namespace denemeBlazor.ViewComponents
 
         public async Task<IViewComponentResult> InvokeAsync()
         {
-            return  View(new CommentCreateDto());
+            return View(new CommentCreateDto());
         }
     }
 }

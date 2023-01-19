@@ -33,7 +33,7 @@ namespace denemeBlazor.Bussines.Services
         }
 
 
-        public Task<IResponse<CommentListDto>> GetQueryable()
+        public Task<IResponse<CommentListDto>> GetQueryable(int id)
         {
             throw new NotImplementedException();
         }
