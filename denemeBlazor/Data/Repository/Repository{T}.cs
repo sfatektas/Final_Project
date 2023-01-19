@@ -1,6 +1,8 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using denemeBlazor.Common;
+using Microsoft.EntityFrameworkCore;
 using SportsStore.Data.Context;
 using SportsStore.Data.Entities;
+using System.Linq;
 using System.Linq.Expressions;
 
 namespace denemeBlazor.Data.Repository
@@ -31,9 +33,15 @@ namespace denemeBlazor.Data.Repository
             return list;
         }
 
-        public async Task<List<T>> GetAllAsync(Expression<Func<T, bool>> filter)
+        public async Task<List<T>> GetAllAsync(Expression<Func<T, bool>> filter )
         {
             var list = await _context.Set<T>().AsNoTracking().Where(filter).ToListAsync();
+            return list;
+        }
+        public async Task<List<T>> GetAllAsync<TKey>(Expression<Func<T, bool>> filter, Expression<Func<T,TKey>> keySelector, OrderByType OrderByType = OrderByType.DESC)
+        {
+            var list = (OrderByType == OrderByType.DESC) ? await _context.Set<T>().AsNoTracking().OrderByDescending(keySelector).Where(filter).ToListAsync() :
+                await _context.Set<T>().AsNoTracking().OrderBy(keySelector).Where(filter).ToListAsync();
             return list;
         }
 
