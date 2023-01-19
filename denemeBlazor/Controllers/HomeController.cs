@@ -45,7 +45,7 @@ namespace denemeBlazor.Controllers
             {
                 return View(response.Data);
             }
-            return NotFound();
+            return View();
         }
 
         [HttpPost]
@@ -60,7 +60,7 @@ namespace denemeBlazor.Controllers
                 if(response.ResponseType == ResponseType.Success)
                 {
                     ViewBag.message = "İşlem Başarılı";
-                    return RedirectToAction("Page", "Home");
+                    return RedirectToAction("Page", "Home",commentCreateDto.PostId);
                 }
             }
             return RedirectToAction("Page", "Home");
