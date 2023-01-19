@@ -10,9 +10,11 @@ namespace denemeBlazor.Models
 
         public string Defination2 { get; set; }
 
-        public IFormFile MediaPath { get; set; }
+        public IFormFile MediaPathFile { get; set; }
 
         public SelectList CategorySelectList { get; set; }
+
+        public int CategoryId { get; set; }
 
         public int AppUserId { get; set; }
     }
