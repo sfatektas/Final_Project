@@ -1,5 +1,8 @@
 ﻿@page "/admin/posts"
+@using denemeBlazor.Pages.PagesHelperMethods
 @inject IJSRuntime jsRuntime;
+@inject IPostService _postService
+@inject NavigationManager NavManager
 
 
 <main class="mt-16 px-32 ">
@@ -10,43 +13,49 @@
     </div>
     <div class="flex flex-col my-4">
 
-        <div class="flex flex-row justify-between items-center border">
-            <img src="./src/img/dummy/img11.jpg" class="w-16">
-            <p class="text-xl px-4">Haber Başlığı</p>
-            <div>
-                <button class="bg-gray-700 text-white p-3">Düzenle</button>
-                <button class="bg-gray-500 text-white py-3 px-6">Sil</button>
-            </div>
-        </div>
-        <div class="flex flex-row justify-between items-center mt-2 border">
-            <img src="./src/img/dummy/img12.jpg" class="w-16">
-            <p class="text-xl px-4">Haber Başlığı</p>
-            <div>
-                <button class="bg-gray-700 text-white p-3">Düzenle</button>
-                <button class="bg-gray-500 text-white py-3 px-6">Sil</button>
-            </div>
-        </div>
-        <div class="flex flex-row justify-between items-center mt-2 border">
-            <img src="./src/img/dummy/img13.jpg" class="w-16">
-            <p class="text-xl px-4">Haber Başlığı</p>
-            <div>
-                <button class="bg-gray-700 text-white p-3">Düzenle</button>
-                <button class="bg-gray-500 text-white py-3 px-6">Sil</button>
-            </div>
-        </div>
-        <div class="flex flex-row justify-between items-center mt-2 border">
-            <img src="./src/img/dummy/img14.jpg" class="w-16">
-            <p class="text-xl px-4">Haber Başlığı</p>
-            <div>
-                <button class="bg-gray-700 text-white p-3">Düzenle</button>
-                <button class="bg-gray-500 text-white py-3 px-6">Sil</button>
-            </div>
-        </div>
+        @if (PostLists != null)
+        {
+            @foreach (var post in PostLists)
+            {
+                <div class="flex flex-row justify-between items-center mt-1 border">
+                    <img src="/src/Files/@post.MediaPath" alt="@post.Title" class="w-16">
+                    <p class="text-xl px-4">@post.Title</p>
+                    <div>
+                        <button @onclick="()=>Edit(post.Id)" class="bg-gray-700 text-white p-3">Düzenle</button>
+                        <button @onclick="()=>Remove(post)" class="bg-gray-500 text-white py-3 px-6">Sil</button>
+                    </div>
+                </div>
+            }
+        }
     </div>
 
 </main>
 
 @code {
-
-
+    public List<PostListDto> PostLists = new();
+    protected async override Task OnInitializedAsync()
+    {
+        var response = await _postService.GetAllAsync();
+        if(response.ResponseType == ResponseType.Success )
+        {
+            PostLists = response.Data;
+        }
+    }
+    public async Task Remove(PostListDto dto)
+    {
+        var result = await jsRuntime.InvokeAsync<bool>("confirm", "Haberi silmek istiyor musunuz?");
+        if (result)
+        {
+            var response = await _postService.RemoveAsync(dto);
+            if (response.ResponseType == ResponseType.Success)
+            {
+                HelperMethods.RemoveFile(dto.MediaPath);
+                NavManager.NavigateTo("/admin/posts", true);
+            }
+        }
+    }
+    public void Edit(int id)
+    {
+        NavManager.NavigateTo($"/admin/editpost/{id}");
+    }
 }

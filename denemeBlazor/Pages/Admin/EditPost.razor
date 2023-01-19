@@ -1,26 +1,124 @@
-﻿@page "/admin/editpost/{id}"
-
+﻿@page "/admin/editpost/{id:int}"
+@using AutoMapper
+@using Microsoft.AspNetCore.Mvc.Rendering
+@using System.Security.Claims
+@using System.Reflection.Metadata
+@using denemeBlazor.Pages.PagesHelperMethods
+@inject IPostService _postService
+@inject ICategoryService _categoryService
+@inject IJSRuntime jsRuntime
+@inject NavigationManager NavManager
+@inject IMapper _mapper;
+@inject AuthenticationStateProvider AuthenticationStateProvider
 
 <main class="mt-16 px-32 ">
     <p class="font-bold text-3xl text-gray-800 px-2 border-l-4 border-red-600 ">Haber Düzenle</p>
     <div class="mt-4">
-        <form class="flex flex-col py-4">
-            <label class="pr-4 my-4 text-2xl">Başlık</label>
-            <input class="border p-4" placeholder="Başlık" />
-            <label class="pr-4 my-4 text-2xl">Ön İçerik</label>
-            <input class="border p-4" placeholder="Ön İçerik" />
-            <label class="pr-4 my-4 text-2xl">İçerik</label>
-            <textarea placeholder="Haber Yazısı" class="border p-4" rows="4" cols="50"></textarea>
-            <div class="flex flex-row justify-between items-center">
-                <input class="mt-4" type="file" />
-                <input class="bg-gray-900 mt-4 w-32 p-4 text-white rounded" type="submit" value="Gönder">
-            </div>
+        @if (PostUpdateModelInstance != null && PostUpdateModelInstance.CategorySelectList != null)
+        {
+            <EditForm enctype="multipart/form-data" Model="@PostUpdateModelInstance" OnValidSubmit="UpdatePostAsync" class="flex flex-col py-4">
+                <DataAnnotationsValidator />
+                <ValidationSummary />
+                <label class="pr-4 my-4 text-2xl">Başlık</label>
+                <InputText @bind-Value="PostUpdateModelInstance.Title" class="border p-4" placeholder="Başlık" />
+                <label class="pr-4 my-4 text-2xl">Ön İçerik</label>
+                <InputText @bind-Value="PostUpdateModelInstance.Defination1" class="border p-4" placeholder="Ön İçerik" />
+                <label class="pr-4 my-4 text-2xl">İçerik</label>
+                <InputTextArea @bind-Value="PostUpdateModelInstance.Defination2" placeholder="Haber Yazısı" class="border p-4" rows="4" cols="50"></InputTextArea>
+                <label class="pr-4 my-4 text-2xl">Kategori</label>
+                <InputSelect @bind-Value="PostUpdateModelInstance.CategoryId" class="border p-4">
+                    @foreach (var category in PostUpdateModelInstance.CategorySelectList)
+                    {
+                        <option value="@category.Value">@category.Text</option>
+                    }
+                </InputSelect>
+                <label class="pr-4 my-4 text-2xl">Fotoğraf</label>
 
-        </form>
+                <img style="width : 100px; height: 100px;" src="/src/Files/@tempMediaPath"/>
+                <div class="flex flex-row justify-between items-center">
+                    <InputFile OnChange="OnFileSelection" @bind-Value="PostUpdateModelInstance.MediaPathFile" class="mt-4 " type="file" />
+                    <button class="bg-gray-900 mt-4 w-32 p-4 text-white rounded" type="submit" value="Gönder">Gönder</button>
+                </div>
+
+            </EditForm>
+
+        }
+
     </div>
 
 </main>
 
 @code {
+    [Parameter]
+    public int Id { get; set; }
 
+    //Variables
+    bool IsSelectedValue;
+    private FileData FileData = new();
+    Guid filename = new Guid();
+    IBrowserFile file;
+
+    string tempMediaPath = "";
+    string fileext = "";
+    private PostUpdateModel PostUpdateModelInstance = new();
+    public SelectList selectList;
+    int userId;
+
+
+    protected async override Task OnInitializedAsync()
+    {
+        var postResponse = await _postService.GetByIdAsync(Id);
+        if(postResponse.ResponseType == ResponseType.Success)
+        {
+            tempMediaPath = postResponse.Data.MediaPath;
+            PostUpdateModelInstance = _mapper.Map<PostUpdateModel>(postResponse.Data);
+
+            var response = await _categoryService.GetAllAsync();
+            if (response.ResponseType == ResponseType.Success)
+            {
+                selectList = new SelectList(response.Data, "Id", "Defination", PostUpdateModelInstance.CategoryId);
+                var provider = await AuthenticationStateProvider.GetAuthenticationStateAsync();
+
+                userId = 1;/*Int32.Parse(provider.User.Identities.Claims.Where(x => x.Type.Equals("NameIdentifier")).ToString());*/ //dinamik olarak COokieden çekilecek
+
+                PostUpdateModelInstance.AppUserId = userId;
+                PostUpdateModelInstance.CategorySelectList = selectList;
+            }
+
+        }
+
+    }
+
+    public async Task UpdatePostAsync(/*PostAddModel model*/)
+    {
+        var updateDto = _mapper.Map<PostUpdateDto>(PostUpdateModelInstance);
+        updateDto.MediaPath = filename + fileext;
+
+
+        var response = await _postService.UpdateAsync(updateDto);
+        if (response.ResponseType == ResponseType.Success)
+        {
+            if(IsSelectedValue)
+            {
+                HelperMethods.RemoveFile(tempMediaPath);
+                await CreateFile();
+                NavManager.NavigateTo("/admin/posts", true);
+            }
+        }
+    }
+
+    public async Task CreateFile()
+    {
+        await using FileStream fs = new(Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "src", "Files", filename + fileext), FileMode.Create);
+        await file.OpenReadStream(maxAllowedSize: 1024 * 1024 * 10).CopyToAsync(fs);
+    }
+
+    private void OnFileSelection(InputFileChangeEventArgs e)
+    {
+        IsSelectedValue = true; //if other file selected
+        file = e.File;
+        fileext = Path.GetExtension(file.Name);
+        filename = FileData.Guid;
+
+    }
 }
