@@ -63,7 +63,7 @@
             selectList = new SelectList(response.Data, "Id", "Defination");
             var provider = await AuthenticationStateProvider.GetAuthenticationStateAsync();
 
-            userId = 1;/*Int32.Parse(provider.User.Identities.Claims.Where(x => x.Type.Equals("NameIdentifier")).ToString());*/ //dinamik olarak COokieden çekilecek
+            userId = Int32.Parse(provider.User.Identities.FirstOrDefault().Claims.Where(x=>x.Type == ClaimTypes.NameIdentifier).FirstOrDefault().Value); //dinamik olarak COokieden çekilecek
 
             PostAddModelInstance.AppUserId = userId;
             PostAddModelInstance.CategorySelectList = selectList;

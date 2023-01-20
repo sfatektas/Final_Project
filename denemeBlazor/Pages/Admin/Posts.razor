@@ -2,6 +2,7 @@
 @using denemeBlazor.Pages.PagesHelperMethods
 @inject IJSRuntime jsRuntime;
 @inject IPostService _postService
+@inject ICommentService _commentService
 @inject NavigationManager NavManager
 
 
@@ -46,6 +47,14 @@
         var result = await jsRuntime.InvokeAsync<bool>("confirm", "Haberi silmek istiyor musunuz?");
         if (result)
         {
+            var postcomments = await _commentService.GetAllAsync(x => x.PostId == dto.Id);
+            if(postcomments.ResponseType == ResponseType.Success)
+            {
+                foreach (var comment in postcomments.Data)
+                {
+                    var commentResponse = await _commentService.RemoveAsync(comment);
+                }
+            }
             var response = await _postService.RemoveAsync(dto);
             if (response.ResponseType == ResponseType.Success)
             {
