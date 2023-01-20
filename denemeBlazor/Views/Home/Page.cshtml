@@ -28,8 +28,6 @@
                         @if (Model != null)
                         {
                             <div class="leading-relaxed pb-4">
-
-
                                 <h2 class="w-full float-left text-sm leading-normal mb-2 font-semibold text-gray-800">Kategori: @Model.Category.Defination </h2>
                                 <h2 class="w-full float-left text-sm leading-normal mb-2 font-semibold text-gray-800">Tarih: @Model.CreatedTime.ToString()</h2>
                                 <Definitaion1 class="mb-5" def-data="@Model.Defination1"></Definitaion1>
@@ -39,7 +37,6 @@
                                 </figure>
                                 <p class="mb-5">@Model.Defination2</p>
                                 <h2 class="w-full float-right text-sm leading-normal mb-2 font-semibold text-gray-800">Yazar: @Model.AppUser.FirstName</h2>
-
                             </div>
                         }
 
@@ -48,7 +45,7 @@
             </div>
             <!-- right -->
             <div class="flex-shrink max-w-full w-full lg:w-1/3 lg:pl-8 lg:pt-14 lg:pb-8 order-first lg:order-last">
-                <div class="w-full bg-white">
+               @* <div class="w-full bg-white">
                     <div class="mb-6">
                         <div class="p-4 bg-gray-100">
                             <h2 class="text-lg font-bold">Most Popular</h2>
@@ -71,16 +68,11 @@
                             </li>
                         </ul>
                     </div>
-                </div>
+                </div>*@
 
-                <div class="text-sm py-6 sticky">
-                    <div class="w-full text-center">
-                        <a class="uppercase" href="#">Reklam</a>
-                        <a href="#">
-                            <img class="mx-auto" src="src/img/ads/250.jpg" alt="advertisement area">
-                        </a>
-                    </div>
-                </div>
+                @await Component.InvokeAsync("GetLastFivePost")
+
+             
             </div>
 
         </div>
@@ -92,12 +84,13 @@
                     @if ((User.IsInRole("Admin") || User.IsInRole("User")) && userId != 0)
                     {
                         @await Component.InvokeAsync("AddComment",new Temp(){
-                            UserId = userId,
-                            PostId= Model.Id
-                        })
+                UserId = userId,
+                PostId= Model.Id
+                })
                     }
-                    else{
-                        <p>Yorum yapmak için<a asp-action="Login" asp-controller="Account">giriş </a> yapınız. </p>
+                    else
+                    {
+                        <p>Yorum yapmak için <a asp-action="Login" asp-controller="Account" class="text-blue-500 underline"> giriş</a> yapınız.</p>
                     }
                     @await Component.InvokeAsync("GetCommands",Model.Id)
                 </div>
