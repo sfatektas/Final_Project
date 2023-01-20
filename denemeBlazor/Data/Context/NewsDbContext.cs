@@ -24,6 +24,8 @@ namespace SportsStore.Data.Context
 
         public DbSet<AppUser> AppUsers { get; set; }
 
+        public DbSet<AppRole> AppRoles { get; set; }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfiguration(new PostConfiguration());

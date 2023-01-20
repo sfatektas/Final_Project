@@ -3,7 +3,7 @@
 @model PostListDto
 @{
     Layout = "_Layout";
-    int userId;
+    int userId = 0;
     if(User.Identity.IsAuthenticated)
     {
         userId = Int32.Parse(User.Identities.FirstOrDefault().Claims.Where(x => x.Type == ClaimTypes.NameIdentifier).FirstOrDefault().Value);

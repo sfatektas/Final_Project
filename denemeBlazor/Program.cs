@@ -25,6 +25,8 @@ builder.Services.AddSingleton<WeatherForecastService>();
 builder.Services.AddControllers().AddNewtonsoftJson(opt=>opt.SerializerSettings.ReferenceLoopHandling =Newtonsoft.Json.ReferenceLoopHandling.Ignore);
 builder.Services.AddControllersWithViews();
 
+//Todo SeedData Eklenecek , UI en son tasarlanacak , Restful Syntax istekleri yapýlacak ,Docker Image alýnacak , Azure Deploy finishh;
+
 
 var app = builder.Build();
 
@@ -50,4 +52,7 @@ endpoints.MapDefaultControllerRoute()
 app.MapBlazorHub();
 app.MapFallbackToPage("/Admin/_Host");
 
+await SeedData.EnsurePopulated(app);
+
 app.Run();
+
