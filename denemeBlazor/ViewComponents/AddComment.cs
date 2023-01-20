@@ -21,7 +21,6 @@ namespace denemeBlazor.ViewComponents
 
         public async Task<IViewComponentResult> InvokeAsync(int id)
         {
-            
             return View(new CommentCreateDto() { PostId = id, AppUserId=1014});
         }
     }

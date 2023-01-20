@@ -39,7 +39,6 @@ namespace denemeBlazor.Controllers
         }
         public async Task<IActionResult> Page(int id)
         {
-
             var response =await _postService.GetQueryable(id);
             if(response.ResponseType == ResponseType.Success)
             {
@@ -59,8 +58,7 @@ namespace denemeBlazor.Controllers
                 var response = await _commentService.CreateAsync(commentCreateDto);
                 if(response.ResponseType == ResponseType.Success)
                 {
-                    ViewBag.message = "İşlem Başarılı";
-                    return RedirectToAction("Page", "Home",commentCreateDto.PostId);
+                    return Redirect($"/Home/Page/{commentCreateDto.PostId}");
                 }
             }
             return RedirectToAction("Page", "Home");

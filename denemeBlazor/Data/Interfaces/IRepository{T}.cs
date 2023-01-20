@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using denemeBlazor.Common;
+using Microsoft.EntityFrameworkCore;
 using SportsStore.Data.Context;
 using SportsStore.Data.Entities;
 using System.Linq.Expressions;
@@ -11,6 +12,7 @@ namespace denemeBlazor.Data.Interfaces
 
         Task<List<T>> GetAllAsync(Expression<Func<T, bool>> filter);
 
+        Task<List<T>> GetAllAsync<TKey>(Expression<Func<T, bool>> filter, Expression<Func<T, TKey>> keySelector, OrderByType OrderByType = OrderByType.DESC);
         Task CreateAsync(T entity);
 
         Task<T> FindAsync(object id);

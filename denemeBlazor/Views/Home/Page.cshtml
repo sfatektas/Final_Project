@@ -1,7 +1,6 @@
 @model PostListDto
 @{
     Layout = "_Layout";
-    var model = Model;
 }
 
 <!-- block news -->
@@ -18,20 +17,24 @@
                 <div class="flex flex-row flex-wrap -mx-3">
                     <div class="max-w-full w-full px-4">
                         <!-- Post content -->
-                        <div class="leading-relaxed pb-4">
+                        @if (Model != null)
+                        {
+                            <div class="leading-relaxed pb-4">
 
 
-                            <h2 class="w-full float-left text-sm leading-normal mb-2 font-semibold text-gray-800">Kategori: @Model.Category.Defination </h2>
-                            <h2 class="w-full float-left text-sm leading-normal mb-2 font-semibold text-gray-800">Tarih: @Model.CreatedTime.ToString()</h2>
-                            <bolderTagHelper class="mb-5" bold-data="@Model.Title"></bolderTagHelper>
-                            <figure class="lg:float-right text-center lg:text-right mr-0 lg:-mr-4 ml-7 mb-7">
-                                <img class="max-w-full h-auto mx-auto" src="@Model.MediaPath" alt="@Model.Title">
-                            </figure>
-                            <Definitaion1 class="mb-5" def-data="@Model.Defination1"></Definitaion1>
-                            <p class="mb-5">@Model.Defination2</p>
-                            <h2 class="w-full float-right text-sm leading-normal mb-2 font-semibold text-gray-800">Yazar: @Model.AppUser.FirstName</h2>
+                                <h2 class="w-full float-left text-sm leading-normal mb-2 font-semibold text-gray-800">Kategori: @Model.Category.Defination </h2>
+                                <h2 class="w-full float-left text-sm leading-normal mb-2 font-semibold text-gray-800">Tarih: @Model.CreatedTime.ToString()</h2>
+                                <bolderTagHelper class="mb-5" bold-data="@Model.Title"></bolderTagHelper>
+                                <figure class="lg:float-right text-center lg:text-right mr-0 lg:-mr-4 ml-7 mb-7">
+                                    <img class="max-w-full h-auto mx-auto" src="~/src/Files/@Model.MediaPath" alt="@Model.Title">
+                                </figure>
+                                <Definitaion1 class="mb-5" def-data="@Model.Defination1"></Definitaion1>
+                                <p class="mb-5">@Model.Defination2</p>
+                                <h2 class="w-full float-right text-sm leading-normal mb-2 font-semibold text-gray-800">Yazar: @Model.AppUser.FirstName</h2>
 
-                        </div>
+                            </div>
+                        }
+
                     </div>
                 </div>
             </div>
@@ -74,10 +77,14 @@
 
         </div>
         <div id="yorumlar">
-            <div class="mt-8">
-                @await Component.InvokeAsync("AddComment",Model.Id)
-                @await Component.InvokeAsync("GetCommands",Model.Id)
-            </div>
+            @if (Model != null)
+            {
+                <div class="mt-8">
+                    @await Component.InvokeAsync("AddComment",Model.Id)
+                    @await Component.InvokeAsync("GetCommands",Model.Id)
+                </div>
+            }
+
         </div>
     </div>
 </div>
