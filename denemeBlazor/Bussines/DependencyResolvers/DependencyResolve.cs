@@ -19,7 +19,7 @@ namespace denemeBlazor.Bussines.DependencyResolvers
         {
 
             builder.Services.AddDbContext<NewsDbContext>(x =>
-x.UseSqlServer(builder.Configuration.GetConnectionString("LocalNewsDbConnection")).EnableSensitiveDataLogging());
+x.UseSqlServer(builder.Configuration.GetConnectionString("RealeseDbConnection")).EnableSensitiveDataLogging());
             builder.Services.AddScoped<AppUserService>();
 
             //Autofac
