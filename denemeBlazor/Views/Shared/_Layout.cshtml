@@ -60,13 +60,13 @@
                                 <a class="block py-3 px-6 border-b-2 border-transparent" href="#teknoloji">Teknoloji</a>
                             </li>
                             <li class="relative border-l border-gray-800 hover:bg-gray-900">
-                                <a class="block py-3 px-6 border-b-2 border-transparent" href="#">Bilim</a>
+                                <a class="block py-3 px-6 border-b-2 border-transparent" href="#bilim">Bilim</a>
                             </li>
                             <li class="relative border-l border-gray-800 hover:bg-gray-900">
-                                <a class="block py-3 px-6 border-b-2 border-transparent" href="#">Tatil</a>
+                                <a class="block py-3 px-6 border-b-2 border-transparent" href="#tatil">Tatil</a>
                             </li>
                             <li class="relative border-l border-gray-800 hover:bg-gray-900">
-                                <a class="block py-3 px-6 border-b-2 border-transparent" href="#">Giriş Yap/Üye Ol</a>
+                                <a class="block py-3 px-6 border-b-2 border-transparent" asp-action="Login" asp-controller="Account">Giriş Yap</a>
                             </li>
                         </ul>
 
@@ -89,7 +89,7 @@
         </nav>
     </header><!-- end header -->
 
-    <div>
+    <div class="pt-9 s:pt-10">
         @RenderBody()
     </div>
 
@@ -185,7 +185,8 @@
         </svg>
     </a>
     <script src="~/src/js/theme.js"></script>
-
+    <script src="src/js/theme.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.2/flowbite.min.js"></script>
     @RenderSection("Scripts", required: false)
 </body>
 </html>
