@@ -16,6 +16,7 @@ builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationSc
         options.ExpireTimeSpan = TimeSpan.FromMinutes(20);
         options.SlidingExpiration = true;
         options.LoginPath = "/Account/Login";
+        options.AccessDeniedPath = "/"; //2Farklý rolümüz olduðu için accessDenith olduðunda otomatik olarak User yorum yapabilcek.
     });
 builder.DependencyInjection();
 builder.Services.AddRazorPages();

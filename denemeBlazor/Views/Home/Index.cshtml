@@ -1,6 +1,7 @@
 @model List<PostListDto>
 @{
     Layout = "_Layout";
+    var lastFivePost = Model.OrderByDescending(x => x.CreatedTime).Take(5);
 }
 
 <!-- Mobile menu -->
@@ -74,89 +75,47 @@
     </div>
 
     <!-- hero big grid -->
-    <div class="bg-white py-6">
-        <div class="xl:container mx-auto px-3 sm:px-4 xl:px-2">
-            <!-- big grid 1 -->
-            <div class="flex flex-row flex-wrap">
-                <!--Start left cover-->
-                <div class="flex-shrink max-w-full w-full lg:w-1/2 pb-1 lg:pb-0 lg:pr-1">
-                    <div class="relative hover-img max-h-98 overflow-hidden">
-                        <a href="page.html">
-                            <img class="max-w-full w-full mx-auto h-auto" src="~/src/img/dummy/img1.jpg" alt="Image description">
-                        </a>
-                        <div class="absolute px-5 pt-8 pb-5 bottom-0 w-full bg-gradient-cover">
-                            <a href="page.html">
-                                <h2 class="text-3xl font-bold capitalize text-white mb-3">Amazon Shoppers Are Ditching Designer Belts for This Best-Selling</h2>
-                            </a>
-                            <p class="text-gray-100 hidden sm:inline-block">This is a wider card with supporting text below as a natural lead-in to additional content. This very helpfull for generate default content..</p>
-                            <div class="pt-2">
-                            </div>
+    <div class="bg-white py-20 xl:container mx-auto">
+
+        <div id="indicators-carousel" class="relative drop-shadow-md" data-carousel="static">
+            <!-- Carousel wrapper -->
+            <div class="relative h-56 overflow-hidden rounded-lg md:h-96">
+                <!-- Item 1 -->
+                @foreach (var haber5 in lastFivePost)
+                {
+                    <div class="duration-700 ease-in-out" data-carousel-item="active">
+                        <img src="~/src/Files/@haber5.MediaPath" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 " alt="...">
+                        <div class="relative top-500 top-1/2 px-4 py-2 opacity-100 backdrop-blur-md bottom-0 h-screen">
+                            <h2 class="text-2xl text-white font-bold text-center mt-4">
+                                @haber5.Title</h2>
+                                <p class="text-md text-white font-bold text-center mt-4 pb-10">@haber5.Defination1</p>
                         </div>
                     </div>
-                </div>
+                }
+                <!-- Item 2 -->
 
-                <!--Start box news-->
-                <div class="flex-shrink max-w-full w-full lg:w-1/2">
-                    <div class="box-one flex flex-row flex-wrap">
-                        <article class="flex-shrink max-w-full w-full sm:w-1/2">
-                            <div class="relative hover-img max-h-48 overflow-hidden">
-                                <a href="page.html">
-                                    <img class="max-w-full w-full mx-auto h-auto" src="~/src/img/dummy/img2.jpg" alt="Image description">
-                                </a>
-                                <div class="absolute px-4 pt-7 pb-4 bottom-0 w-full bg-gradient-cover">
-                                    <a href="page.html">
-                                        <h2 class="text-lg font-bold capitalize leading-tight text-white mb-1">News magazines are becoming obsolete, replaced by gadgets</h2>
-                                    </a>
-                                    <div class="pt-1">
-                                    </div>
-                                </div>
-                            </div>
-                        </article>
-                        <article class="flex-shrink max-w-full w-full sm:w-1/2">
-                            <div class="relative hover-img max-h-48 overflow-hidden">
-                                <a href="page.html">
-                                    <img class="max-w-full w-full mx-auto h-auto" src="~/src/img/dummy/img3.jpg" alt="Image description">
-                                </a>
-                                <div class="absolute px-4 pt-7 pb-4 bottom-0 w-full bg-gradient-cover">
-                                    <a href="page.html">
-                                        <h2 class="text-lg font-bold capitalize leading-tight text-white mb-1">Minimalist designs are starting to be popular with the next generation</h2>
-                                    </a>
-                                    <div class="pt-1">
-                                    </div>
-                                </div>
-                            </div>
-                        </article>
-                        <article class="flex-shrink max-w-full w-full sm:w-1/2">
-                            <div class="relative hover-img max-h-48 overflow-hidden">
-                                <a href="page.html">
-                                    <img class="max-w-full w-full mx-auto h-auto" src="~/src/img/dummy/img4.jpg" alt="Image description">
-                                </a>
-                                <div class="absolute px-4 pt-7 pb-4 bottom-0 w-full bg-gradient-cover">
-                                    <a href="page.html">
-                                        <h2 class="text-lg font-bold capitalize leading-tight text-white mb-1">Tips for decorating the interior of the living room</h2>
-                                    </a>
-                                    <div class="pt-1">
-                                    </div>
-                                </div>
-                            </div>
-                        </article>
-                        <article class="flex-shrink max-w-full w-full sm:w-1/2">
-                            <div class="relative hover-img max-h-48 overflow-hidden">
-                                <a href="page.html">
-                                    <img class="max-w-full w-full mx-auto h-auto" src="~/src/img/dummy/img5.jpg" alt="Image description">
-                                </a>
-                                <div class="absolute px-4 pt-7 pb-4 bottom-0 w-full bg-gradient-cover">
-                                    <a href="page.html">
-                                        <h2 class="text-lg font-bold capitalize leading-tight text-white mb-1">Online taxi users are increasing drastically ahead of the new year</h2>
-                                    </a>
-                                    <div class="pt-1">
-                                    </div>
-                                </div>
-                            </div>
-                        </article>
-                    </div>
-                </div>
             </div>
+            <!-- Slider indicators -->
+            <div class="absolute z-30 flex space-x-3 -translate-x-1/2 bottom-5 left-1/2">
+                <button type="button" class="w-3 h-3 rounded-full" aria-current="true" aria-label="Slide 1" data-carousel-slide-to="0"></button>
+                <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 2" data-carousel-slide-to="1"></button>
+                <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 3" data-carousel-slide-to="2"></button>
+                <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 4" data-carousel-slide-to="3"></button>
+                <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 5" data-carousel-slide-to="4"></button>
+            </div>
+            <!-- Slider controls -->
+            <button type="button" class="absolute top-0 left-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none" data-carousel-prev>
+                <span class="inline-flex items-center justify-center w-8 h-8 rounded-full sm:w-10 sm:h-10 bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
+                    <svg aria-hidden="true" class="w-5 h-5 text-white sm:w-6 sm:h-6 dark:text-gray-800" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+                    <span class="sr-only">Previous</span>
+                </span>
+            </button>
+            <button type="button" class="absolute top-0 right-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none" data-carousel-next>
+                <span class="inline-flex items-center justify-center w-8 h-8 rounded-full sm:w-10 sm:h-10 bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
+                    <svg aria-hidden="true" class="w-5 h-5 text-white sm:w-6 sm:h-6 dark:text-gray-800" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                    <span class="sr-only">Next</span>
+                </span>
+            </button>
         </div>
     </div>
 
@@ -195,32 +154,7 @@
                     </div>
                 </div>
                 <!-- right -->
-                @*<div class="flex-shrink max-w-full w-full lg:w-1/3 lg:pl-8 lg:pt-14 lg:pb-8 order-first lg:order-last">
-                    <div class="w-full bg-white">
-                        <div class="mb-6">
-                            <div class="p-4 bg-gray-100">
-                                <h2 class="text-lg font-bold">Most Popular</h2>
-                            </div>
-                            <ul class="post-number">
-                                <li class="border-b border-gray-100 hover:bg-gray-50">
-                                    <a class="text-lg font-bold px-6 py-3 flex flex-row items-center" href="#">Why the world would end without political polls</a>
-                                </li>
-                                <li class="border-b border-gray-100 hover:bg-gray-50">
-                                    <a class="text-lg font-bold px-6 py-3 flex flex-row items-center" href="#">Meet The Man Who Designed The Ducati Monster</a>
-                                </li>
-                                <li class="border-b border-gray-100 hover:bg-gray-50">
-                                    <a class="text-lg font-bold px-6 py-3 flex flex-row items-center" href="#">2020 Audi R8 Spyder spy shots release</a>
-                                </li>
-                                <li class="border-b border-gray-100 hover:bg-gray-50">
-                                    <a class="text-lg font-bold px-6 py-3 flex flex-row items-center" href="#">Lamborghini makes Huracán GT3 racer faster for 2019</a>
-                                </li>
-                                <li class="border-b border-gray-100 hover:bg-gray-50">
-                                    <a class="text-lg font-bold px-6 py-3 flex flex-row items-center" href="#">ZF plans $14 billion autonomous vehicle push, concept van</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>*@
+
             </div>
         </div>
     </div>
@@ -232,7 +166,8 @@
             <div class="flex flex-row flex-wrap">
                 <div class="flex-shrink max-w-full w-full overflow-hidden">
                     <div class="w-full py-3">
-                        <h2 class="text-gray-800 text-2xl font-bold">Siyaset
+                        <h2 class="text-gray-800 text-2xl font-bold">
+                            Siyaset
                         </h2>
                     </div>
                     <div class="flex flex-row flex-wrap -mx-3">
@@ -269,27 +204,28 @@
                 <!-- Left -->
                 <div class="flex-shrink max-w-full w-full lg:w-2/3  overflow-hidden">
                     <div class="w-full py-3">
-                        <h2 class="text-gray-800 text-2xl font-bold">Teknoloji
+                        <h2 class="text-gray-800 text-2xl font-bold">
+                            Teknoloji
                         </h2>
                     </div>
                     <div class="flex flex-row flex-wrap -mx-3">
                         @*<div class="flex-shrink max-w-full w-full px-3 pb-5">
-                            <div class="relative hover-img max-h-98 overflow-hidden">
-                                <!--thumbnail-->
-                                <a href="#">
-                                    <img class="max-w-full w-full mx-auto h-auto" src="~/src/img/dummy/img2.jpg" alt="Image description">
-                                </a>
-                                <div class="absolute px-5 pt-8 pb-5 bottom-0 w-full bg-gradient-cover">
-                                    <!--title-->
-                                    <a href="#">
-                                        <h2 class="text-3xl font-bold capitalize text-white mb-3">Amazon Shoppers Are Ditching Designer Belts for This Best-Selling</h2>
-                                    </a>
-                                    <p class="text-gray-100 hidden sm:inline-block">This is a wider card with supporting text below as a natural lead-in to additional content. This very helpfull for generate default content..</p>
-                                    <!-- author and date -->
-                                    <div class="pt-2">
-                                    </div>
-                                </div>
-                            </div>
+                        <div class="relative hover-img max-h-98 overflow-hidden">
+                        <!--thumbnail-->
+                        <a href="#">
+                        <img class="max-w-full w-full mx-auto h-auto" src="~/src/img/dummy/img2.jpg" alt="Image description">
+                        </a>
+                        <div class="absolute px-5 pt-8 pb-5 bottom-0 w-full bg-gradient-cover">
+                        <!--title-->
+                        <a href="#">
+                        <h2 class="text-3xl font-bold capitalize text-white mb-3">Amazon Shoppers Are Ditching Designer Belts for This Best-Selling</h2>
+                        </a>
+                        <p class="text-gray-100 hidden sm:inline-block">This is a wider card with supporting text below as a natural lead-in to additional content. This very helpfull for generate default content..</p>
+                        <!-- author and date -->
+                        <div class="pt-2">
+                        </div>
+                        </div>
+                        </div>
                         </div>*@
                         @foreach (var haberler in Model)
                         {
@@ -317,46 +253,122 @@
                 @*
 
                 <div class="flex-shrink max-w-full w-full lg:w-1/3 lg:pl-8 lg:pt-14 lg:pb-8 order-first lg:order-last">
-                    <div class="w-full bg-white">
-                        <div class="mb-6">
-                            <div class="p-4 bg-gray-100">
-                                <h2 class="text-lg font-bold">Most Popular</h2>
-                            </div>
-                            <ul class="post-number">
-                                <li class="border-b border-gray-100 hover:bg-gray-50">
-                                    <a class="text-lg font-bold px-6 py-3 flex flex-row items-center" href="#">Why the world would end without political polls</a>
-                                </li>
-                                <li class="border-b border-gray-100 hover:bg-gray-50">
-                                    <a class="text-lg font-bold px-6 py-3 flex flex-row items-center" href="#">Meet The Man Who Designed The Ducati Monster</a>
-                                </li>
-                                <li class="border-b border-gray-100 hover:bg-gray-50">
-                                    <a class="text-lg font-bold px-6 py-3 flex flex-row items-center" href="#">2020 Audi R8 Spyder spy shots release</a>
-                                </li>
-                                <li class="border-b border-gray-100 hover:bg-gray-50">
-                                    <a class="text-lg font-bold px-6 py-3 flex flex-row items-center" href="#">Lamborghini makes Huracán GT3 racer faster for 2019</a>
-                                </li>
-                                <li class="border-b border-gray-100 hover:bg-gray-50">
-                                    <a class="text-lg font-bold px-6 py-3 flex flex-row items-center" href="#">ZF plans $14 billion autonomous vehicle push, concept van</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
+                <div class="w-full bg-white">
+                <div class="mb-6">
+                <div class="p-4 bg-gray-100">
+                <h2 class="text-lg font-bold">Most Popular</h2>
+                </div>
+                <ul class="post-number">
+                <li class="border-b border-gray-100 hover:bg-gray-50">
+                <a class="text-lg font-bold px-6 py-3 flex flex-row items-center" href="#">Why the world would end without political polls</a>
+                </li>
+                <li class="border-b border-gray-100 hover:bg-gray-50">
+                <a class="text-lg font-bold px-6 py-3 flex flex-row items-center" href="#">Meet The Man Who Designed The Ducati Monster</a>
+                </li>
+                <li class="border-b border-gray-100 hover:bg-gray-50">
+                <a class="text-lg font-bold px-6 py-3 flex flex-row items-center" href="#">2020 Audi R8 Spyder spy shots release</a>
+                </li>
+                <li class="border-b border-gray-100 hover:bg-gray-50">
+                <a class="text-lg font-bold px-6 py-3 flex flex-row items-center" href="#">Lamborghini makes Huracán GT3 racer faster for 2019</a>
+                </li>
+                <li class="border-b border-gray-100 hover:bg-gray-50">
+                <a class="text-lg font-bold px-6 py-3 flex flex-row items-center" href="#">ZF plans $14 billion autonomous vehicle push, concept van</a>
+                </li>
+                </ul>
+                </div>
+                </div>
 
-                    <div class="text-sm py-6 sticky">
-                        <div class="w-full text-center">
-                            <a class="uppercase" href="#">Reklam</a>
-                            <a href="#">
-                                <img class="mx-auto" src="~/src/img/ads/250.jpg" alt="advertisement area">
-                            </a>
-                        </div>
-                    </div>
+                <div class="text-sm py-6 sticky">
+                <div class="w-full text-center">
+                <a class="uppercase" href="#">Reklam</a>
+                <a href="#">
+                <img class="mx-auto" src="~/src/img/ads/250.jpg" alt="advertisement area">
+                </a>
+                </div>
+                </div>
                 </div>
                 *@
             </div>
         </div>
     </div>
-
     <!-- block news -->
-    
+
+    <div id="bilim" class="bg-white">
+        <div class="xl:container mx-auto px-3 sm:px-4 xl:px-2">
+            <div class="flex flex-row flex-wrap">
+                <!-- Left -->
+                <div class="flex-shrink max-w-full w-full lg:w-2/3 overflow-hidden">
+                    <div class="w-full py-3">
+                        <h2 class="text-gray-800 text-2xl font-bold">
+                            <span class="inline-block h-5 border-l-3 border-red-600 mr-2"></span>Bilim
+                        </h2>
+                    </div>
+                    <div class="flex flex-row flex-wrap -mx-3">
+                        @foreach (var haberler in Model)
+                        {
+                            if (haberler.CategoryId == (int)CategoryType.Bilim)
+                            {
+
+                                <div class="flex-shrink max-w-full w-full sm:w-1/3 px-3 pb-3 pt-3 sm:pt-0 border-b-2 sm:border-b-0 border-dotted border-gray-100">
+                                    <div class="flex flex-row sm:block hover-img">
+                                        <a asp-action="Page" asp-controller="Home" asp-route-id="@haberler.Id">
+                                            <img class="max-w-full w-full mx-auto" src="~/src/Files/@haberler.MediaPath" alt="@haberler.Defination1">
+                                        </a>
+                                        <div class="py-0 sm:py-3 pl-3 sm:pl-0">
+                                            <h3 class="text-lg font-bold leading-tight mb-2">
+                                                <a asp-action="Page" asp-controller="Home" asp-route-id="@haberler.Id">@haberler.Title</a>
+                                            </h3>
+                                            <p class="hidden md:block text-gray-600 leading-tight mb-1">@haberler.Defination1</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                        }
+                    </div>
+                </div>
+                <!-- right -->
+
+            </div>
+        </div>
+    </div>
+
+    <div id="tatil" class="bg-white">
+        <div class="xl:container mx-auto px-3 sm:px-4 xl:px-2">
+            <div class="flex flex-row flex-wrap">
+                <!-- Left -->
+                <div class="flex-shrink max-w-full w-full lg:w-2/3 overflow-hidden">
+                    <div class="w-full py-3">
+                        <h2 class="text-gray-800 text-2xl font-bold">
+                            <span class="inline-block h-5 border-l-3 border-red-600 mr-2"></span>Spor
+                        </h2>
+                    </div>
+                    <div class="flex flex-row flex-wrap -mx-3">
+                        @foreach (var haberler in Model)
+                        {
+                            if (haberler.CategoryId == (int)CategoryType.Tatil)
+                            {
+
+                                <div class="flex-shrink max-w-full w-full sm:w-1/3 px-3 pb-3 pt-3 sm:pt-0 border-b-2 sm:border-b-0 border-dotted border-gray-100">
+                                    <div class="flex flex-row sm:block hover-img">
+                                        <a asp-action="Page" asp-controller="Home" asp-route-id="@haberler.Id">
+                                            <img class="max-w-full w-full mx-auto" src="~/src/Files/@haberler.MediaPath" alt="@haberler.Defination1">
+                                        </a>
+                                        <div class="py-0 sm:py-3 pl-3 sm:pl-0">
+                                            <h3 class="text-lg font-bold leading-tight mb-2">
+                                                <a asp-action="Page" asp-controller="Home" asp-route-id="@haberler.Id">@haberler.Title</a>
+                                            </h3>
+                                            <p class="hidden md:block text-gray-600 leading-tight mb-1">@haberler.Defination1</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                        }
+                    </div>
+                </div>
+                <!-- right -->
+
+            </div>
+        </div>
+    </div>
 
 </main><!-- end main -->

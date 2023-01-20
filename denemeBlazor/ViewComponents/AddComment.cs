@@ -1,6 +1,7 @@
 ﻿using denemeBlazor.Bussines.Dtos;
 using denemeBlazor.Bussines.Interfaces;
 using denemeBlazor.Data.Interfaces;
+using denemeBlazor.Helpers;
 using denemeBlazor.Services;
 using FluentValidation;
 using Microsoft.AspNetCore.Mvc;
@@ -19,9 +20,10 @@ namespace denemeBlazor.ViewComponents
             _createDtoValidator = createDtoValidator;
         }
 
-        public async Task<IViewComponentResult> InvokeAsync(int id)
+        public async Task<IViewComponentResult> InvokeAsync(Temp Model)
         {
-            return View(new CommentCreateDto() { PostId = id, AppUserId=1014});
+
+            return View(new CommentCreateDto() { PostId = Model.PostId, AppUserId=Model.UserId});
         }
     }
 }

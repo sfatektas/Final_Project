@@ -51,7 +51,6 @@ namespace denemeBlazor.Controllers
         public async Task<IActionResult> CommentAdd(CommentCreateDto commentCreateDto)
         {
             var result = _validator.Validate(commentCreateDto);
-            commentCreateDto.AppUserId = 1;
             
             if (result.IsValid)
             {
