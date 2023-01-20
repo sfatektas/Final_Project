@@ -1,7 +1,7 @@
 ﻿@page "Admin/Panel"
 @namespace denemeBlazor.Pages
 @using Microsoft.AspNetCore.Authorization
-@attribute [Authorize]
+@attribute [Authorize(Roles ="Admin")]
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 @{
     Layout = "_Layout";
