@@ -21,7 +21,7 @@ namespace denemeBlazor.ViewComponents
 
         public async Task<IViewComponentResult> InvokeAsync()
         {
-            var response = await _uow.GetRepository<Post>().GetQueryable().OrderByDescending(x => x.CreatedTime).Take(5).ToListAsync();
+            var response = await _uow.GetRepository<Post>().GetQueryable().OrderByDescending(x => x.Id).Take(5).ToListAsync();
             return View(_mapper.Map<List<PostListDto>>(response));
         }
 

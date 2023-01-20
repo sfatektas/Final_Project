@@ -1,7 +1,7 @@
 @model List<PostListDto>
 @{
     Layout = "_Layout";
-    var lastFivePost = Model.OrderByDescending(x => x.CreatedTime).Take(5);
+    var lastFivePost = Model.OrderByDescending(x => x.Id).Take(5);
 }
 
 <!-- Mobile menu -->
