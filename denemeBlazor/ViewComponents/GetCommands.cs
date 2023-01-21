@@ -22,7 +22,7 @@ namespace denemeBlazor.ViewComponents
 
         public async Task<IViewComponentResult> InvokeAsync(int id)
         {
-            var response = await _uow.GetRepository<Comment>().GetQueryable().Where(x=>x.PostId == id).OrderByDescending(x=>x.CreatedTime).Include(x=>x.AppUser).ToListAsync();
+            var response = await _uow.GetRepository<Comment>().GetQueryable().Where(x=>x.PostId == id).OrderByDescending(x=>x.Id).Include(x=>x.AppUser).ToListAsync();
             return View(_mapper.Map<List<CommentListDto>>(response));
         }
     }
