@@ -1,6 +1,7 @@
 ﻿@page "/admin/users"
 
 @inject IAppUserService _appUserservice
+@inject ICommentService _commentService
 @inject NavigationManager NavManager
 @inject IJSRuntime jsRuntime
 
@@ -45,6 +46,18 @@
         var result = await jsRuntime.InvokeAsync<bool>("confirm", "Kullanıcıyı silmek istiyor musunuz?");
         if (result)
         {
+            var responseComment = await _commentService.GetAllAsync();
+            if(responseComment.ResponseType ==ResponseType.Success)
+            {
+                foreach (var comment in responseComment.Data)
+                {
+                    if(comment.AppUserId == dto.Id)
+                    {
+                        var deleteResponse = await _commentService.RemoveAsync(comment);
+                    }
+                }
+            }
+
             var response = await _appUserservice.RemoveAsync(dto);
             if (response.ResponseType == ResponseType.Success)
             {
