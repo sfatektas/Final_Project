@@ -31,10 +31,10 @@
                                 <h2 class="w-full float-left text-sm leading-normal mb-2 font-semibold text-gray-800">Kategori: @Model.Category.Defination </h2>
                                 <h2 class="w-full float-left text-sm leading-normal mb-2 font-semibold text-gray-800">Tarih: @Model.CreatedTime.ToString()</h2>
                                 <Definitaion1 class="mb-5" def-data="@Model.Defination1"></Definitaion1>
-                                <bolderTagHelper class="mb-5" bold-data="@Model.Title"></bolderTagHelper>
-                                <figure class="lg:float-right text-center lg:text-right mr-0 lg:-mr-4 ml-7 mb-7">
+                                <figure class="text-center lg:-mr-4 ml-7 mb-7">
                                     <img class="max-w-full h-auto mx-auto" src="~/src/Files/@Model.MediaPath" alt="@Model.Title">
                                 </figure>
+                                <bolderTagHelper class="mb-5" bold-data="@Model.Title"></bolderTagHelper>
                                 <p class="mb-5">@Model.Defination2</p>
                                 <h2 class="w-full float-right text-sm leading-normal mb-2 font-semibold text-gray-800">Yazar: @Model.AppUser.FirstName</h2>
                             </div>
