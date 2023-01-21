@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Razor.TagHelpers;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace denemeBlazor.TagHelpers
 {
@@ -8,7 +9,8 @@ namespace denemeBlazor.TagHelpers
         public string defData { get; set; }
         public override void Process(TagHelperContext context, TagHelperOutput output)
         {
-            output.Content.SetHtmlContent($"<h5 class='font-normal'>{defData}</h5>");
+            output.Content.SetHtmlContent("<p class= "+ "text-lg font-bold" + $">{defData}</p>");
+
         }
     }
 }

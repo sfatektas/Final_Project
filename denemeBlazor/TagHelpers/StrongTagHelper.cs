@@ -8,7 +8,7 @@ namespace denemeBlazor.TagHelpers
         public string boldData { get; set; }
         public override void Process(TagHelperContext context, TagHelperOutput output)
         {
-            output.Content.SetHtmlContent($"<h3 class='font-semibold'> {boldData} <b>"); 
+            output.Content.SetHtmlContent($"<b class='font-semibold'> {boldData} </b>"); 
         }
     }
 
