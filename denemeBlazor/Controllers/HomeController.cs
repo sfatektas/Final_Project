@@ -9,14 +9,12 @@ namespace denemeBlazor.Controllers
 {
     public class HomeController : Controller
     {
-        readonly ICategoryService _categoryService;
         readonly IPostService _postService;
         readonly ICommentService _commentService;
         readonly IValidator<CommentCreateDto> _validator;
 
-        public HomeController(ICategoryService categoryService, IPostService postService, IValidator<CommentCreateDto> createDtoValidator, ICommentService commentService)
+        public HomeController( IPostService postService, IValidator<CommentCreateDto> createDtoValidator, ICommentService commentService)
         {
-            _categoryService = categoryService;
             _postService = postService;
             _validator = createDtoValidator;
             _commentService = commentService;
@@ -29,14 +27,10 @@ namespace denemeBlazor.Controllers
             {
                 return View(response.Data);
             }
-            //var response = await _categoryService.GetAllAsync();
-            //if (response.ResponseType == Common.ResponseType.Success)
-            //{
-            //    return View(response.Data);
-            //}
-            //ViewBag.Message = response.Message;
             return View(response.Message) ;
         }
+        [HttpGet("[controller]/Pages/{id}")] //Restful Api syntaxı ile ana ekrana ilgili post geliyor.
+
         public async Task<IActionResult> Page(int id)
         {
             var response =await _postService.GetQueryable(id);
@@ -50,6 +44,7 @@ namespace denemeBlazor.Controllers
         [HttpPost]
         public async Task<IActionResult> CommentAdd(CommentCreateDto commentCreateDto)
         {
+            
             var result = _validator.Validate(commentCreateDto);
             
             if (result.IsValid)
@@ -59,6 +54,10 @@ namespace denemeBlazor.Controllers
                 {
                     return Redirect($"/Home/Page/{commentCreateDto.PostId}");
                 }
+            }
+            foreach (var error in result.Errors)
+            {
+                ModelState.AddModelError(error.ErrorCode, error.ErrorMessage);
             }
             return RedirectToAction("Page", "Home");
         }

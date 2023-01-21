@@ -10,7 +10,7 @@
     <meta name="description" content="Tailwind CSS News Template">
 
     <link rel="stylesheet" href="~/src/css/style.css">
-    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="~/src/js/tailwind.js"></script>
 
 
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;600;700&amp;display=swap" rel="stylesheet">
@@ -42,7 +42,7 @@
                     </div>
                 </div>
                 <div class="flex justify-between ">
-                    <div class="mx-w-10 font-bold text-2xl capitalize text-white flex items-center"><a href="index.html">MSS Haber</a></div>
+                    <div class="mx-w-10 font-bold text-2xl capitalize text-white flex items-center"><a asp-action="Index" asp-controller="Home">MSS Haber</a></div>
 
                     <div class="flex flex-row ">
                         <!-- nav menu -->
@@ -192,8 +192,8 @@
         </svg>
     </a>
     <script src="~/src/js/theme.js"></script>
-    <script src="src/js/theme.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.2/flowbite.min.js"></script>
+    @*<script src="src/js/theme.js"></script>*@
+    <script src="/src/js/flowbite.min.js"></script>
     @RenderSection("Scripts", required: false)
 </body>
 </html>

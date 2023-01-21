@@ -21,6 +21,7 @@ namespace denemeBlazor.Bussines.DependencyResolvers.Autofac
             builder.RegisterType<AppUserService>().As<IAppUserService>().InstancePerLifetimeScope();
             builder.RegisterType<CommentService>().As<ICommentService>().InstancePerLifetimeScope();
             builder.RegisterType<CategoryCreateDtoValidator>().As<IValidator<CategoryCreateDto>>().InstancePerDependency();//addTransient
+            builder.RegisterType<CommentCreateDtoValidator>().As<IValidator<CommentCreateDto>>().InstancePerDependency();//addTransient
 
 
 

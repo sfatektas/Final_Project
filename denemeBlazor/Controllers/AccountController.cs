@@ -72,5 +72,9 @@ namespace denemeBlazor.Controllers
     CookieAuthenticationDefaults.AuthenticationScheme);
             return RedirectToAction("Login");
         }
+        public IActionResult Denied()
+        {
+            return View();
+        }
     }
 }
