@@ -6,10 +6,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
   <title>MSS Haber</title>
-  <meta name="description" content="Tailwind CSS News Template">
+  <meta name="description" content="MSS Haber">
 
 
-  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="./src/js/tailwind.js"></script>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;600;700&amp;display=swap" rel="stylesheet">
 
   <link rel="icon" href="src/img/favicon.jpg">
@@ -59,19 +59,45 @@
      </header><!-- end header -->
 
      <main class="mt-16 px-32 ">
-        <p class="font-bold text-3xl text-gray-800 px-2 border-l-4 border-red-600 ">Haber Ekle</p>
-        <div class="mt-4">
-          <form class="flex flex-col py-4">
-            <label class="pr-4 my-4 text-2xl">Başlık</label>
-            <input class="border p-4" placeholder="Başlık"/>
-            <label class="pr-4 my-4 text-2xl">Ön İçerik</label>
-            <input class="border p-4" placeholder="Ön İçerik"/>
-            <label class="pr-4 my-4 text-2xl">İçerik</label>
-            <textarea placeholder="Haber Yazısı" class="border p-4" rows="4" cols="50"></textarea>
-            <div class="flex flex-row justify-between items-center"><input class="mt-4" type="file"/>
-              <input class="bg-gray-900 mt-4 w-32 p-4 text-white rounded" type="submit" value="Gönder"></div>
+        <div class="flex flex-row justify-between items-center">
+        <p class="font-bold text-3xl text-gray-800 px-2 border-l-4 border-red-600">Haberler</p>
+        <a href="/post_add.html"><button class="bg-gray-900 text-white p-4 text-xl rounded">Haber Ekle</button></a>
 
-          </form>
+        </div>
+        <div class="flex flex-col my-4">
+          
+          <div class="flex flex-row justify-between items-center border">
+            <img src="./src/img/dummy/img11.jpg" class="w-16">
+            <p class="text-xl px-4">Haber Başlığı</p>
+            <div>
+            <button class="bg-gray-700 text-white p-3">Düzenle</button>
+            <button class="bg-gray-500 text-white py-3 px-6">Sil</button>
+        </div>
+          </div>
+          <div class="flex flex-row justify-between items-center mt-2 border">
+            <img src="./src/img/dummy/img12.jpg" class="w-16">
+            <p class="text-xl px-4">Haber Başlığı</p>
+            <div>
+              <button class="bg-gray-700 text-white p-3">Düzenle</button>
+              <button class="bg-gray-500 text-white py-3 px-6">Sil</button>
+            </div>
+          </div>
+          <div class="flex flex-row justify-between items-center mt-2 border">
+            <img src="./src/img/dummy/img13.jpg" class="w-16">
+            <p class="text-xl px-4">Haber Başlığı</p>
+            <div>
+              <button class="bg-gray-700 text-white p-3">Düzenle</button>
+              <button class="bg-gray-500 text-white py-3 px-6">Sil</button>
+            </div>
+          </div>
+          <div class="flex flex-row justify-between items-center mt-2 border">
+            <img src="./src/img/dummy/img14.jpg" class="w-16">
+            <p class="text-xl px-4">Haber Başlığı</p>
+            <div>
+              <button class="bg-gray-700 text-white p-3">Düzenle</button>
+              <button class="bg-gray-500 text-white py-3 px-6">Sil</button>
+            </div>
+          </div>
         </div>
 
      </main>
@@ -150,7 +176,7 @@
               <div class="flex-shrink max-w-full w-1/2 md:w-1/4 mb-6 lg:mb-0">
                 <h4 class="text-base leading-normal mb-3 uppercase text-gray-100">Düzenlemeler</h4>
                 <ul>
-                  <li class="py-1 hover:text-white hover:text-white"><a href="#">Gizlilik Hakları</a></li>
+                  <li class="py-1 hover:text-white"><a href="#">Gizlilik Hakları</a></li>
                   <li class="py-1 hover:text-white"><a href="#">Kullanım Hakları</a></li>
                   <li class="py-1 hover:text-white"><a href="#">Lisans</a></li>
                 </ul>
