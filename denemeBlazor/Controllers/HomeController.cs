@@ -2,11 +2,13 @@
 using denemeBlazor.Bussines.Interfaces;
 using denemeBlazor.Common;
 using FluentValidation;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Runtime.CompilerServices;
 
 namespace denemeBlazor.Controllers
 {
+    [Authorize]
     public class HomeController : Controller
     {
         readonly IPostService _postService;
@@ -50,16 +52,19 @@ namespace denemeBlazor.Controllers
             if (result.IsValid)
             {
                 var response = await _commentService.CreateAsync(commentCreateDto);
-                if(response.ResponseType == ResponseType.Success)
+                if(response.ResponseType == ResponseType.Error)
                 {
-                    return Redirect($"/Home/Page/{commentCreateDto.PostId}");
+                    foreach (var error in response.ValidationErrors)
+                    {
+                        ModelState.AddModelError(error.ErrorCode, error.ErrorMessage);
+                    }
                 }
             }
             foreach (var error in result.Errors)
             {
                 ModelState.AddModelError(error.ErrorCode, error.ErrorMessage);
             }
-            return RedirectToAction("Page", "Home");
+            return Redirect($"/Home/Pages/{commentCreateDto.PostId}");
         }
     }
 }
