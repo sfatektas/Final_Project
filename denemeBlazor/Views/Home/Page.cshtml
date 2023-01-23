@@ -19,7 +19,7 @@
             <div class="flex-shrink max-w-full w-full lg:w-3/5  overflow-hidden">
                 <div class="w-full py-3 mb-3">
                     <h2 class="text-gray-800 text-3xl font-bold">
-                        <span class="inline-block h-5 border-l-3 border-red-600 mr-2"></span> Haber Başlığı
+                        <span class="inline-block h-5 border-l-3 border-red-600 mr-2"></span> <boldertaghelper bold-data="@Model.Title"></boldertaghelper>
                     </h2>
                 </div>
                 <div class="flex flex-row flex-wrap -mx-3">
@@ -31,7 +31,6 @@
 
                                 <h2 class="w-full float-left text-sm leading-normal mb-2 font-semibold text-gray-800">Kategori: @Model.Category.Defination </h2>
                                 <h2 class="w-full float-left text-sm leading-normal mb-2 font-semibold text-gray-800">Tarih: @Model.CreatedTime.ToString()</h2>
-                                <boldertaghelper class="mb-5" bold-data="@Model.Title"></boldertaghelper>
 
                                 <Definitaion1 class="mb-5" def-data="@Model.Defination1"></Definitaion1>
                                 <figure class="text-center lg:-mr-4 ml-7 mb-7">

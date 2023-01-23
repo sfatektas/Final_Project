@@ -8,7 +8,6 @@ using System.Runtime.CompilerServices;
 
 namespace denemeBlazor.Controllers
 {
-    [Authorize]
     public class HomeController : Controller
     {
         readonly IPostService _postService;
@@ -31,6 +30,7 @@ namespace denemeBlazor.Controllers
             }
             return View(response.Message) ;
         }
+
         [HttpGet("[controller]/Pages/{id}")] //Restful Api syntaxı ile ana ekrana ilgili post geliyor.
 
         public async Task<IActionResult> Page(int id)
@@ -42,7 +42,7 @@ namespace denemeBlazor.Controllers
             }
             return View();
         }
-
+        [Authorize]
         [HttpPost]
         public async Task<IActionResult> CommentAdd(CommentCreateDto commentCreateDto)
         {
