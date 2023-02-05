@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.3.32922.545
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MSS_NewsWeb", "denemeBlazor\MSS_NewsWeb.csproj", "{EB0A96BF-2451-4375-8A8F-DB9535F3530D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MSS_NewsWeb", "MSS_NewsWeb.csproj", "{ED577C32-34FF-4520-BF3C-D60BCF898D91}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,15 +11,15 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{EB0A96BF-2451-4375-8A8F-DB9535F3530D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{EB0A96BF-2451-4375-8A8F-DB9535F3530D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{EB0A96BF-2451-4375-8A8F-DB9535F3530D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{EB0A96BF-2451-4375-8A8F-DB9535F3530D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ED577C32-34FF-4520-BF3C-D60BCF898D91}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ED577C32-34FF-4520-BF3C-D60BCF898D91}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ED577C32-34FF-4520-BF3C-D60BCF898D91}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ED577C32-34FF-4520-BF3C-D60BCF898D91}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {3FBEEC66-5CE8-418E-99EC-3710A86EE77D}
+		SolutionGuid = {0E71861F-79C8-4C21-8FC0-DD2F620B4217}
 	EndGlobalSection
 EndGlobal
