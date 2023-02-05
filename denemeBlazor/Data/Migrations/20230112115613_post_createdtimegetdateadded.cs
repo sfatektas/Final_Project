@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
-namespace denemeBlazor.Data.Migrations
+namespace MSS_NewsWeb.Data.Migrations
 {
     public partial class post_createdtimegetdateadded : Migration
     {

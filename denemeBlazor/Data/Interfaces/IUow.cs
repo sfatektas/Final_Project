@@ -1,7 +1,7 @@
-﻿using denemeBlazor.Data.Repository;
+﻿using MSS_NewsWeb.Data.Repository;
 using SportsStore.Data.Entities;
 
-namespace denemeBlazor.Data.Interfaces
+namespace MSS_NewsWeb.Data.Interfaces
 {
     public interface IUow
     {

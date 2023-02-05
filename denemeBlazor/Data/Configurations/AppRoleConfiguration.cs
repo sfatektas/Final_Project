@@ -1,8 +1,8 @@
-﻿using denemeBlazor.Data.Entities;
+﻿using MSS_NewsWeb.Data.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace denemeBlazor.Data.Configurations
+namespace MSS_NewsWeb.Data.Configurations
 {
     public class AppRoleConfiguration : IEntityTypeConfiguration<AppRole>
     {

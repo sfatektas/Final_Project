@@ -1,12 +1,12 @@
-﻿using denemeBlazor.Bussines.Dtos;
-using denemeBlazor.Bussines.Interfaces;
-using denemeBlazor.Data.Interfaces;
-using denemeBlazor.Helpers;
-using denemeBlazor.Services;
+﻿using MSS_NewsWeb.Bussines.Dtos;
+using MSS_NewsWeb.Bussines.Interfaces;
+using MSS_NewsWeb.Data.Interfaces;
+using MSS_NewsWeb.Helpers;
+using MSS_NewsWeb.Services;
 using FluentValidation;
 using Microsoft.AspNetCore.Mvc;
 
-namespace denemeBlazor.ViewComponents
+namespace MSS_NewsWeb.ViewComponents
 {
     public class AddComment : ViewComponent
     {

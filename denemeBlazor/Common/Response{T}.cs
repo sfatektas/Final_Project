@@ -1,6 +1,6 @@
-﻿using denemeBlazor.Common.Interfaces;
+﻿using MSS_NewsWeb.Common.Interfaces;
 
-namespace denemeBlazor.Common
+namespace MSS_NewsWeb.Common
 {
     public class Response : IResponse
     {

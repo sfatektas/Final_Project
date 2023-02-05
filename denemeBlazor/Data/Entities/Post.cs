@@ -1,4 +1,4 @@
-﻿using denemeBlazor.Data.Entities;
+﻿using MSS_NewsWeb.Data.Entities;
 using Microsoft.AspNetCore.Identity;
 using System;
 using System.Collections.Generic;

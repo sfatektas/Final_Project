@@ -1,8 +1,8 @@
-﻿using denemeBlazor.Bussines.Dtos;
+﻿using MSS_NewsWeb.Bussines.Dtos;
 using FluentValidation;
 using Microsoft.EntityFrameworkCore.ValueGeneration.Internal;
 
-namespace denemeBlazor.Bussines.ValidationRules
+namespace MSS_NewsWeb.Bussines.ValidationRules
 {
     public class PostCreateDtoValidator : AbstractValidator<PostCreateDto>
     {

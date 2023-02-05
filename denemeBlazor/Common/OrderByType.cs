@@ -1,4 +1,4 @@
-﻿namespace denemeBlazor.Common
+﻿namespace MSS_NewsWeb.Common
 {
     public enum OrderByType
     {

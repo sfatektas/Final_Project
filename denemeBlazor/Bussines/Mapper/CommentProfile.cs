@@ -1,8 +1,8 @@
 ﻿using AutoMapper;
-using denemeBlazor.Bussines.Dtos;
+using MSS_NewsWeb.Bussines.Dtos;
 using SportsStore.Data.Entities;
 
-namespace denemeBlazor.Bussines.Mapper
+namespace MSS_NewsWeb.Bussines.Mapper
 {
     public class CommentProfile : Profile
     {

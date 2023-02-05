@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc.Rendering;
 
-namespace denemeBlazor.Models
+namespace MSS_NewsWeb.Models
 {
     public class PostAddModel
     {

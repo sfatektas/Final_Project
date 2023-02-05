@@ -1,9 +1,9 @@
 ﻿using AutoMapper;
-using denemeBlazor.Bussines.Dtos;
-using denemeBlazor.Models;
+using MSS_NewsWeb.Bussines.Dtos;
+using MSS_NewsWeb.Models;
 using SportsStore.Data.Entities;
 
-namespace denemeBlazor.Bussines.Mapper
+namespace MSS_NewsWeb.Bussines.Mapper
 {
     public class PostProfile : Profile
     {

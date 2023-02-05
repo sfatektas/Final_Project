@@ -1,15 +1,15 @@
 ﻿using Autofac;
-using denemeBlazor.Bussines.Dtos;
-using denemeBlazor.Bussines.Interfaces;
-using denemeBlazor.Bussines.Services;
-using denemeBlazor.Bussines.ValidationRules;
-using denemeBlazor.Data.Interfaces;
-using denemeBlazor.Data.UnitOfWork;
+using MSS_NewsWeb.Bussines.Dtos;
+using MSS_NewsWeb.Bussines.Interfaces;
+using MSS_NewsWeb.Bussines.Services;
+using MSS_NewsWeb.Bussines.ValidationRules;
+using MSS_NewsWeb.Data.Interfaces;
+using MSS_NewsWeb.Data.UnitOfWork;
 using FluentValidation;
 using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
 
-namespace denemeBlazor.Bussines.DependencyResolvers.Autofac
+namespace MSS_NewsWeb.Bussines.DependencyResolvers.Autofac
 {
     public class AutofacBussinesModule : Module
     {

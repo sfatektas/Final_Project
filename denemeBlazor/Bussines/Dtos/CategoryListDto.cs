@@ -1,7 +1,7 @@
-﻿using denemeBlazor.Services.Interfaces;
+﻿using MSS_NewsWeb.Services.Interfaces;
 using SportsStore.Data.Entities;
 
-namespace denemeBlazor.Bussines.Dtos
+namespace MSS_NewsWeb.Bussines.Dtos
 {
     public class CategoryListDto : IListDto
     {

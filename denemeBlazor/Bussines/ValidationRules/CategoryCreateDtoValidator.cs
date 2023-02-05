@@ -1,7 +1,7 @@
-﻿using denemeBlazor.Bussines.Dtos;
+﻿using MSS_NewsWeb.Bussines.Dtos;
 using FluentValidation;
 
-namespace denemeBlazor.Bussines.ValidationRules
+namespace MSS_NewsWeb.Bussines.ValidationRules
 {
     public class CategoryCreateDtoValidator : AbstractValidator<CategoryCreateDto>
     {

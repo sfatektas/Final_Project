@@ -1,8 +1,8 @@
-﻿using denemeBlazor.Bussines.Dtos;
-using denemeBlazor.Services.Interfaces;
+﻿using MSS_NewsWeb.Bussines.Dtos;
+using MSS_NewsWeb.Services.Interfaces;
 using SportsStore.Data.Entities;
 
-namespace denemeBlazor.Bussines.Interfaces
+namespace MSS_NewsWeb.Bussines.Interfaces
 {
     public interface ICategoryService : IService<CategoryCreateDto,CategoryListDto,CategoryUpdateDto,Category>
     {

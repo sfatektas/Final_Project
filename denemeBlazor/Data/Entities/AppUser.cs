@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using SportsStore.Data.Entities;
 
-namespace denemeBlazor.Data.Entities
+namespace MSS_NewsWeb.Data.Entities
 {
     public class AppUser : BaseEntity
     {

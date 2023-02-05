@@ -1,16 +1,16 @@
 ﻿using AutoMapper;
-using denemeBlazor.Bussines.Dtos;
-using denemeBlazor.Bussines.Interfaces;
-using denemeBlazor.Common;
-using denemeBlazor.Common.Interfaces;
-using denemeBlazor.Data.Entities;
-using denemeBlazor.Data.Interfaces;
-using denemeBlazor.Services;
-using denemeBlazor.Services.Interfaces;
+using MSS_NewsWeb.Bussines.Dtos;
+using MSS_NewsWeb.Bussines.Interfaces;
+using MSS_NewsWeb.Common;
+using MSS_NewsWeb.Common.Interfaces;
+using MSS_NewsWeb.Data.Entities;
+using MSS_NewsWeb.Data.Interfaces;
+using MSS_NewsWeb.Services;
+using MSS_NewsWeb.Services.Interfaces;
 using FluentValidation;
 using Microsoft.EntityFrameworkCore;
 
-namespace denemeBlazor.Bussines.Services
+namespace MSS_NewsWeb.Bussines.Services
 {
     public class AppUserService : Service<AppUserCreateDto,AppUserListDto,AppUserUpdateDto,AppUser>,IAppUserService
     {

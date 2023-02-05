@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace denemeBlazor.Pages.Admin
+namespace MSS_NewsWeb.Pages.Admin
 {
     public class IndexModel : PageModel
     {

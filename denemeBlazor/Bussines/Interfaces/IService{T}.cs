@@ -1,10 +1,10 @@
-﻿using denemeBlazor.Common;
-using denemeBlazor.Common.Interfaces;
-using denemeBlazor.Data.Interfaces;
+﻿using MSS_NewsWeb.Common;
+using MSS_NewsWeb.Common.Interfaces;
+using MSS_NewsWeb.Data.Interfaces;
 using SportsStore.Data.Entities;
 using System.Linq.Expressions;
 
-namespace denemeBlazor.Services.Interfaces
+namespace MSS_NewsWeb.Services.Interfaces
 {
     public interface IService<CreateDto, ListDto, UpdateDto, T> where CreateDto : class, ICreateDto
         where ListDto : class, IListDto

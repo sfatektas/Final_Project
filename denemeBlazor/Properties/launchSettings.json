@@ -8,7 +8,7 @@
     }
   },
   "profiles": {
-    "denemeBlazor": {
+    "MSS_NewsWeb": {
       "commandName": "Project",
       "dotnetRunMessages": true,
       "launchBrowser": true,

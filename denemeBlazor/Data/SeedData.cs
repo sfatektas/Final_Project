@@ -1,9 +1,9 @@
-﻿using denemeBlazor.Data.Entities;
+﻿using MSS_NewsWeb.Data.Entities;
 using Microsoft.EntityFrameworkCore;
 using SportsStore.Data.Context;
 using SportsStore.Data.Entities;
 
-namespace denemeBlazor.Data
+namespace MSS_NewsWeb.Data
 {
     public static class SeedData
     {

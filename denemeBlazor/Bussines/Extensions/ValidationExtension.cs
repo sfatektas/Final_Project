@@ -1,7 +1,7 @@
-﻿using denemeBlazor.Common.Interfaces;
+﻿using MSS_NewsWeb.Common.Interfaces;
 using FluentValidation.Results;
 
-namespace denemeBlazor.Bussines.Extensions
+namespace MSS_NewsWeb.Bussines.Extensions
 {
     public static class ValidationExtension
     {

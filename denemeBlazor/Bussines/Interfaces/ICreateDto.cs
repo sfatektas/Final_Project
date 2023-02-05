@@ -1,4 +1,4 @@
-﻿namespace denemeBlazor.Services.Interfaces
+﻿namespace MSS_NewsWeb.Services.Interfaces
 {
     public interface ICreateDto
     {

@@ -1,4 +1,4 @@
-﻿namespace denemeBlazor.Pages.PagesHelperMethods
+﻿namespace MSS_NewsWeb.Pages.PagesHelperMethods
 {
     public static class HelperMethods
     {

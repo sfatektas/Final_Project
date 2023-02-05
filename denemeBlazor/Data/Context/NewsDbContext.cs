@@ -1,5 +1,5 @@
-﻿using denemeBlazor.Data.Configurations;
-using denemeBlazor.Data.Entities;
+﻿using MSS_NewsWeb.Data.Configurations;
+using MSS_NewsWeb.Data.Entities;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;

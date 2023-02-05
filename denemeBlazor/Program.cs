@@ -1,5 +1,5 @@
-using denemeBlazor.Bussines.DependencyResolvers;
-using denemeBlazor.Data;
+using MSS_NewsWeb.Bussines.DependencyResolvers;
+using MSS_NewsWeb.Data;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Web;

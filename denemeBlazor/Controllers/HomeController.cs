@@ -1,12 +1,12 @@
-﻿using denemeBlazor.Bussines.Dtos;
-using denemeBlazor.Bussines.Interfaces;
-using denemeBlazor.Common;
+﻿using MSS_NewsWeb.Bussines.Dtos;
+using MSS_NewsWeb.Bussines.Interfaces;
+using MSS_NewsWeb.Common;
 using FluentValidation;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Runtime.CompilerServices;
 
-namespace denemeBlazor.Controllers
+namespace MSS_NewsWeb.Controllers
 {
     public class HomeController : Controller
     {

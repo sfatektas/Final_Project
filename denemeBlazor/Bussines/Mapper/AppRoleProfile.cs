@@ -1,8 +1,8 @@
 ﻿using AutoMapper;
-using denemeBlazor.Bussines.Dtos;
-using denemeBlazor.Data.Entities;
+using MSS_NewsWeb.Bussines.Dtos;
+using MSS_NewsWeb.Data.Entities;
 
-namespace denemeBlazor.Bussines.Mapper
+namespace MSS_NewsWeb.Bussines.Mapper
 {
     public class AppRoleProfile : Profile
     {

@@ -1,14 +1,14 @@
 ﻿using AutoMapper;
-using denemeBlazor.Bussines.Dtos;
-using denemeBlazor.Bussines.Interfaces;
-using denemeBlazor.Bussines.Services;
-using denemeBlazor.Data.Interfaces;
+using MSS_NewsWeb.Bussines.Dtos;
+using MSS_NewsWeb.Bussines.Interfaces;
+using MSS_NewsWeb.Bussines.Services;
+using MSS_NewsWeb.Data.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ViewComponents;
 using Microsoft.EntityFrameworkCore;
 using SportsStore.Data.Entities;
 
-namespace denemeBlazor.ViewComponents
+namespace MSS_NewsWeb.ViewComponents
 {
     public class GetCommands : ViewComponent
     {

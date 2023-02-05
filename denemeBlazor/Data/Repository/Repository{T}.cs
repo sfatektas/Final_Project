@@ -1,11 +1,11 @@
-﻿using denemeBlazor.Common;
+﻿using MSS_NewsWeb.Common;
 using Microsoft.EntityFrameworkCore;
 using SportsStore.Data.Context;
 using SportsStore.Data.Entities;
 using System.Linq;
 using System.Linq.Expressions;
 
-namespace denemeBlazor.Data.Repository
+namespace MSS_NewsWeb.Data.Repository
 {
     public class Repository<T> where T : BaseEntity
     {

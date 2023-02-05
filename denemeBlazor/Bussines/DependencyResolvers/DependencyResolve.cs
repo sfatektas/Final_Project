@@ -1,17 +1,17 @@
 ﻿using Autofac.Extensions.DependencyInjection;
 using Autofac;
-using denemeBlazor.Bussines.DependencyResolvers.Autofac;
+using MSS_NewsWeb.Bussines.DependencyResolvers.Autofac;
 using FluentValidation.AspNetCore;
-using denemeBlazor.Bussines.Mapper;
+using MSS_NewsWeb.Bussines.Mapper;
 using Microsoft.EntityFrameworkCore;
 using SportsStore.Data.Context;
 using FluentValidation;
-using denemeBlazor.Bussines.Dtos;
-using denemeBlazor.Bussines.ValidationRules;
+using MSS_NewsWeb.Bussines.Dtos;
+using MSS_NewsWeb.Bussines.ValidationRules;
 using AutoMapper;
-using denemeBlazor.Bussines.Services;
+using MSS_NewsWeb.Bussines.Services;
 
-namespace denemeBlazor.Bussines.DependencyResolvers
+namespace MSS_NewsWeb.Bussines.DependencyResolvers
 {
     public static class DependencyResolve
     {

@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc.ApiExplorer;
 
-namespace denemeBlazor.Common.Interfaces
+namespace MSS_NewsWeb.Common.Interfaces
 {
     public interface IResponse
     {

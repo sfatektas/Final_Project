@@ -1,12 +1,12 @@
-﻿using denemeBlazor.Bussines.Interfaces;
-using denemeBlazor.Models;
+﻿using MSS_NewsWeb.Bussines.Interfaces;
+using MSS_NewsWeb.Models;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
-using denemeBlazor.Common;
+using MSS_NewsWeb.Common;
 
-namespace denemeBlazor.Controllers
+namespace MSS_NewsWeb.Controllers
 {
     public class AccountController : Controller
     {

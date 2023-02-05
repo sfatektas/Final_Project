@@ -9,7 +9,7 @@ using SportsStore.Data.Context;
 
 #nullable disable
 
-namespace denemeBlazor.Data.Migrations
+namespace MSS_NewsWeb.Data.Migrations
 {
     [DbContext(typeof(NewsDbContext))]
     [Migration("20230112115613_post_createdtimegetdateadded")]
@@ -24,7 +24,7 @@ namespace denemeBlazor.Data.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
 
-            modelBuilder.Entity("denemeBlazor.Data.Entities.AppRole", b =>
+            modelBuilder.Entity("MSS_NewsWeb.Data.Entities.AppRole", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -40,7 +40,7 @@ namespace denemeBlazor.Data.Migrations
                     b.ToTable("AppRole");
                 });
 
-            modelBuilder.Entity("denemeBlazor.Data.Entities.AppUser", b =>
+            modelBuilder.Entity("MSS_NewsWeb.Data.Entities.AppUser", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -164,9 +164,9 @@ namespace denemeBlazor.Data.Migrations
                     b.ToTable("Posts");
                 });
 
-            modelBuilder.Entity("denemeBlazor.Data.Entities.AppUser", b =>
+            modelBuilder.Entity("MSS_NewsWeb.Data.Entities.AppUser", b =>
                 {
-                    b.HasOne("denemeBlazor.Data.Entities.AppRole", "AppRole")
+                    b.HasOne("MSS_NewsWeb.Data.Entities.AppRole", "AppRole")
                         .WithMany("AppUsers")
                         .HasForeignKey("AppRoleId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -177,7 +177,7 @@ namespace denemeBlazor.Data.Migrations
 
             modelBuilder.Entity("SportsStore.Data.Entities.Comment", b =>
                 {
-                    b.HasOne("denemeBlazor.Data.Entities.AppUser", "AppUser")
+                    b.HasOne("MSS_NewsWeb.Data.Entities.AppUser", "AppUser")
                         .WithMany("Comments")
                         .HasForeignKey("AppUserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -196,7 +196,7 @@ namespace denemeBlazor.Data.Migrations
 
             modelBuilder.Entity("SportsStore.Data.Entities.Post", b =>
                 {
-                    b.HasOne("denemeBlazor.Data.Entities.AppUser", "AppUser")
+                    b.HasOne("MSS_NewsWeb.Data.Entities.AppUser", "AppUser")
                         .WithMany("Posts")
                         .HasForeignKey("AppUserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -213,12 +213,12 @@ namespace denemeBlazor.Data.Migrations
                     b.Navigation("Category");
                 });
 
-            modelBuilder.Entity("denemeBlazor.Data.Entities.AppRole", b =>
+            modelBuilder.Entity("MSS_NewsWeb.Data.Entities.AppRole", b =>
                 {
                     b.Navigation("AppUsers");
                 });
 
-            modelBuilder.Entity("denemeBlazor.Data.Entities.AppUser", b =>
+            modelBuilder.Entity("MSS_NewsWeb.Data.Entities.AppUser", b =>
                 {
                     b.Navigation("Comments");
 

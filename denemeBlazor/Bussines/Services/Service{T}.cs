@@ -1,16 +1,16 @@
 ﻿using AutoMapper;
-using denemeBlazor.Bussines.Extensions;
-using denemeBlazor.Common;
-using denemeBlazor.Common.Interfaces;
-using denemeBlazor.Data.Interfaces;
-using denemeBlazor.Services.Interfaces;
+using MSS_NewsWeb.Bussines.Extensions;
+using MSS_NewsWeb.Common;
+using MSS_NewsWeb.Common.Interfaces;
+using MSS_NewsWeb.Data.Interfaces;
+using MSS_NewsWeb.Services.Interfaces;
 using FluentValidation;
 using Microsoft.AspNetCore.Connections.Features;
 using Microsoft.EntityFrameworkCore;
 using SportsStore.Data.Entities;
 using System.Linq.Expressions;
 
-namespace denemeBlazor.Services
+namespace MSS_NewsWeb.Services
 {
     public class Service<CreateDto, ListDto, UpdateDto, T> :IService<CreateDto , ListDto , UpdateDto , T>
         where CreateDto : class , ICreateDto

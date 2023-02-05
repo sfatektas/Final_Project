@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Razor.TagHelpers;
 using static System.Net.Mime.MediaTypeNames;
 
-namespace denemeBlazor.TagHelpers
+namespace MSS_NewsWeb.TagHelpers
 {
     [HtmlTargetElement("Definitaion1")]
     public class Defination1TagHelper : TagHelper

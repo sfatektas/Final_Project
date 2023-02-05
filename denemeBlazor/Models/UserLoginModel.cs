@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace denemeBlazor.Models
+namespace MSS_NewsWeb.Models
 {
     public class UserLoginModel
     {

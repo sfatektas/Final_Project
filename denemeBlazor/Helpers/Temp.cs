@@ -1,4 +1,4 @@
-﻿namespace denemeBlazor.Helpers
+﻿namespace MSS_NewsWeb.Helpers
 {
     public class Temp
     {

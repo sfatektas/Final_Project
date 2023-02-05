@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Razor.TagHelpers;
 
-namespace denemeBlazor.TagHelpers
+namespace MSS_NewsWeb.TagHelpers
 {
     [HtmlTargetElement("bolderTagHelper")]
     public class StrongTagHelper : TagHelper

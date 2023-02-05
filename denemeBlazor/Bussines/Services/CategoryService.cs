@@ -1,13 +1,13 @@
 ﻿using AutoMapper;
-using denemeBlazor.Bussines.Dtos;
-using denemeBlazor.Bussines.Interfaces;
-using denemeBlazor.Common.Interfaces;
-using denemeBlazor.Data.Interfaces;
-using denemeBlazor.Services;
+using MSS_NewsWeb.Bussines.Dtos;
+using MSS_NewsWeb.Bussines.Interfaces;
+using MSS_NewsWeb.Common.Interfaces;
+using MSS_NewsWeb.Data.Interfaces;
+using MSS_NewsWeb.Services;
 using FluentValidation;
 using SportsStore.Data.Entities;
 
-namespace denemeBlazor.Bussines.Services
+namespace MSS_NewsWeb.Bussines.Services
 {
     public class CategoryService : Service<CategoryCreateDto, CategoryListDto, CategoryUpdateDto, Category>, ICategoryService
     {

@@ -1,4 +1,4 @@
-namespace denemeBlazor.Data
+namespace MSS_NewsWeb.Data
 {
     public class WeatherForecast
     {

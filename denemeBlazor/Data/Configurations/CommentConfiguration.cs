@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using SportsStore.Data.Entities;
 
-namespace denemeBlazor.Data.Configurations
+namespace MSS_NewsWeb.Data.Configurations
 {
     public class CommentConfiguration : IEntityTypeConfiguration<Comment>
     {
