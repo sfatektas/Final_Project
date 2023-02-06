@@ -10,7 +10,7 @@ gibi aktivitelerin olduğu bir projedir.
 
 ### Kullanılan Teknoloji,Paketler;
 
-* **Katmanlı Mimari ,EF Core, Repository Design Pattern , Unit Of Work, Fluent Validation , AutoMapper , AutoFac ,TailwindCSS Blazor**
+* **Katmanlı Mimari ,EF Core, Repository Design Pattern , Unit Of Work, Fluent Validation , AutoMapper , AutoFac ,TailwindCSS ,Blazor**
 
 
 [Live Prewiew](https://newsdb.azurewebsites.net/)
